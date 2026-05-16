@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-05-16",
+  "window_weeks": 4,
+  "trend": [
+    {
+      "week": "2026-04-25",
+      "source": "pilot",
+      "kpi_status": "yellow"
+    },
+    {
+      "week": "2026-05-02",
+      "source": "pilot",
+      "kpi_status": "green"
+    },
+    {
+      "week": "2026-05-09",
+      "source": "pilot",
+      "kpi_status": "green"
+    },
+    {
+      "week": "2026-05-16",
+      "source": "pilot",
+      "kpi_status": "green"
+    }
+  ],
+  "note": "Pilot expansion gate input with reviewed KPI statuses"
+}

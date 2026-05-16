@@ -1,0 +1,16 @@
+{
+  "week": "2026-05-16",
+  "inputs": {
+    "dashboard_input": "data/scaling/pilot-dashboard-input-2026-05-16.json",
+    "lessons_file": "data/scaling/pilot-lessons-2026-05-16.md",
+    "major_rollback": false
+  },
+  "criteria": {
+    "two_week_core_metrics_green": true,
+    "no_major_rollback": true,
+    "closure_rate": 0.80,
+    "closure_rate_threshold": 0.80
+  },
+  "result": "PASS",
+  "fallback_action": "none"
+}
