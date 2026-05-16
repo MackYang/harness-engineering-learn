@@ -1,0 +1,4 @@
+week,event_id,event_type,root_cause,action,outcome
+2026-03-21,EVT-001,UPGRADE,manual_review_latency,expanded_auto_merge_scope,improved_cycle_time
+2026-04-18,EVT-005,ROLLBACK,deploy_gate_misclassification,downgraded_to_l2_and_patch_rule,stabilized_within_1_week
+2026-04-25,EVT-006,RECOVERY,post_rollback_policy_fix,restored_l3_with_guardrail,stable_for_3_weeks

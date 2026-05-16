@@ -1,0 +1,28 @@
+{
+  "window_id": "2026Q2",
+  "input": "data/autonomy/l3l4-window-2026Q2.csv",
+  "weeks": 8,
+  "thresholds": {
+    "cfr_le": 0.10,
+    "mttr_minutes_le": 60,
+    "eval_pass_rate_ge": 0.85,
+    "rollback_events_le": 1
+  },
+  "metrics": {
+    "avg_cfr": 0.0875,
+    "avg_mttr_minutes": 52.00,
+    "avg_eval_pass_rate": 0.8900,
+    "rollback_events": 1,
+    "weeks_cfr_degraded": 1,
+    "weeks_mttr_degraded": 1,
+    "weeks_eval_degraded": 1
+  },
+  "checks": {
+    "cfr_ok": true,
+    "mttr_ok": true,
+    "eval_ok": true,
+    "rollback_ok": true
+  },
+  "result": "PASS",
+  "fallback_action": "none"
+}

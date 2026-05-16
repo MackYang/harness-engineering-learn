@@ -1,0 +1,9 @@
+week,cfr,mttr_minutes,eval_pass_rate,event_id,event_type,root_cause,action
+2026-03-21,0.08,46,0.90,EVT-001,UPGRADE,manual_review_latency,expanded_auto_merge_scope
+2026-03-28,0.09,50,0.89,EVT-002,OBSERVE,policy_noise_in_warn_rules,refined_rule_thresholds
+2026-04-04,0.10,58,0.88,EVT-003,OBSERVE,minor_test_flakiness,stabilized_test_retries
+2026-04-11,0.09,55,0.90,EVT-004,OBSERVE,no_major_issue,kept_current_level
+2026-04-18,0.11,62,0.84,EVT-005,ROLLBACK,deploy_gate_misclassification,downgraded_to_l2_and_patch_rule
+2026-04-25,0.08,52,0.88,EVT-006,RECOVERY,post_rollback_policy_fix,restored_l3_with_guardrail
+2026-05-02,0.07,48,0.91,EVT-007,OBSERVE,no_major_issue,continued_monitoring
+2026-05-09,0.08,45,0.92,EVT-008,OBSERVE,no_major_issue,prepared_quarterly_review
