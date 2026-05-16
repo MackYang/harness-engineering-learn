@@ -1,0 +1,5 @@
+rule_id,level,total_hits,false_positive_hits,avg_pipeline_seconds,actionable_blocks
+high-risk-changes,block,35,3,240,27
+eval-regression,block,24,1,230,20
+license-warning,warn,22,1,205,16
+secret-scan,observe,16,1,195,12

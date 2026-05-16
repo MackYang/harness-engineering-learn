@@ -1,0 +1,24 @@
+{
+  "period": "2026-05",
+  "input": "data/ops/rule-quality-input-2026-05.csv",
+  "targets": {
+    "false_positive_rate_le": 0.15,
+    "avg_pipeline_seconds_le": 300,
+    "block_value_ratio_ge": 0.60
+  },
+  "metrics": {
+    "rule_count": 4,
+    "total_hits": 97,
+    "false_positive_hits": 6,
+    "false_positive_rate": 0.0619,
+    "avg_pipeline_seconds": 217.50,
+    "actionable_blocks": 75,
+    "block_value_ratio": 0.7732
+  },
+  "checks": {
+    "false_positive_ok": true,
+    "pipeline_ok": true,
+    "block_value_ok": true
+  },
+  "result": "PASS"
+}

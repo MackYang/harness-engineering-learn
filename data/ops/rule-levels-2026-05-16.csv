@@ -1,0 +1,5 @@
+rule_id,level,rationale,owner,next_action
+high-risk-changes,block,high-risk path changes must be gated,Security + DevEx,keep blocking and reduce false positives by path allowlist
+eval-regression,block,regression breaks release confidence,QA + DevEx,keep blocking and tune flaky-case suppression
+license-warning,warn,license issues need remediation but not immediate block,Security,convert to block only when legal-risk tag is high
+secret-scan,observe,signal still noisy and needs calibration,Security,collect 2 more cycles then evaluate upgrade to warn
