@@ -1,0 +1,33 @@
+name: CI Baseline
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Baseline check
+        run: |
+          echo "CI baseline workflow is active."
+
+      - name: Lint
+        run: |
+          make lint
+
+      - name: Test
+        run: |
+          make test
+
+      - name: Eval
+        run: |
+          make eval
+
+      - name: Policy
+        run: |
+          make policy

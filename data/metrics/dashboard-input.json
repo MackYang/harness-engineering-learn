@@ -54,7 +54,7 @@
       "week": "2026-05-16",
       "source": "local",
       "telemetry": {
-        "git_commits": 0
+        "git_commits": 5
       },
       "dora": {
         "lead_time": "pending_remote_pr_data",

@@ -1,0 +1,15 @@
+{
+  "date": "2026-05-15",
+  "pilot": "Harness",
+  "dora": {
+    "lead_time": "baseline_pending",
+    "deploy_frequency": "baseline_pending",
+    "change_failure_rate": "baseline_pending",
+    "mttr": "under_5_minutes_simulated"
+  },
+  "quality": {
+    "eval_pass_rate": "pending_p2_02",
+    "manual_rework_rate": "pending"
+  },
+  "notes": "Initial baseline sample generated from local readiness stage."
+}

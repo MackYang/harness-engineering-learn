@@ -1,0 +1,2 @@
+{"id":"task-001","input":"update status file","expected":"status updated"}
+{"id":"task-002","input":"create readiness doc","expected":"doc created"}

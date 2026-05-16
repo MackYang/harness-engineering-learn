@@ -1,0 +1,5 @@
+Provenance Baseline
+generated_at=2026-05-15 21:31:22 +0800
+git_repo=true
+git_branch=main
+git_head=no_commit
