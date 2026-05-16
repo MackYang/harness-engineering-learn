@@ -1,0 +1,28 @@
+version: v1.1.0
+updated_at: 2026-05-16
+owner: Platform Team + DevEx
+assets:
+  - id: template.service-starter
+    category: templates
+    version: v1.0.0
+    source_path: templates/service-starter/README.md
+    owner: Platform Team
+    description: Service starter baseline for new projects.
+  - id: policy.high-risk-changes
+    category: policy
+    version: v1.0.0
+    source_path: policy/high-risk-changes.rego
+    owner: Security + DevEx
+    description: High-risk path changes require approval.
+  - id: eval.core-task-suite
+    category: evals
+    version: v1.0.0
+    source_path: evals/datasets/core_tasks.jsonl
+    owner: AI Engineer
+    description: Core task eval dataset.
+  - id: runbook.dev-workflow
+    category: runbooks
+    version: v1.0.0
+    source_path: docs/runbooks/dev-workflow.md
+    owner: DevEx
+    description: Standard local and CI workflow.

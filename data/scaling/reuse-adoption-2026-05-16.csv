@@ -1,0 +1,3 @@
+project,template_reuse,policy_reuse,eval_reuse,runbook_reuse
+project-atlas,1.00,1.00,0.75,0.75
+project-beacon,0.75,0.75,0.75,1.00
