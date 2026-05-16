@@ -262,6 +262,184 @@ Go/No-Go 条件（全部满足才可进入阶段 A）：
 - L3/L4 项目具备可解释的升级/回退闭环
 - 组织层面的角色、值班、升级机制稳定运行
 
+## 13. 如何把当前成果应用到具体项目（实操指南）
+
+本节默认你已经有一个目标业务仓库（记为 `<TARGET_REPO>`），目标是在 1-2 周内把当前 Harness-Engineering 成果接入并跑通。
+
+### 13.1 两种接入模式（先选一种）
+
+模式 A：仓库内直接接入（推荐）
+- 场景：可直接改造目标仓库结构。
+- 做法：将“入口文档 + 门禁脚本 + 状态治理 + 指标采集”直接落到 `<TARGET_REPO>`。
+- 优点：接入快、执行面一致性高。
+
+模式 B：平台模板接入
+- 场景：多个项目由平台模板统一孵化。
+- 做法：先把成果沉淀到模板仓库，再让项目继承。
+- 优点：规模化成本低、跨项目一致。
+
+### 13.2 成果映射表（从当前仓库到目标项目）
+
+最低建议迁移清单：
+- 入口与规则：
+  - `AGENTS.md`
+  - `ARCHITECTURE.md`
+  - `CONTRIBUTING.md`
+- 执行入口与 CI：
+  - `Makefile`
+  - `.github/workflows/ci.yml`
+  - `scripts/ci/*.sh`
+- 策略门禁：
+  - `policy/high-risk-changes.rego`
+  - `scripts/ci/policy_check.sh`
+- 指标与状态治理：
+  - `scripts/metrics/collect_metrics.sh`
+  - `docs/status/harness-execution-status.md`
+  - `docs/handoff/context-handoff.md`
+- 成熟度运营：
+  - `docs/ops/rule-quality/*`
+  - `docs/autonomy/*`
+  - `scripts/ops/calc_rule_quality_metrics.sh`
+  - `scripts/autonomy/evaluate_l3l4_window.sh`
+
+### 13.2.1 文件级影响清单（接入后会对业务项目产生什么影响）
+
+| 文件/目录 | 接入后对业务项目的主要影响 | 额外成本/注意点 |
+|---|---|---|
+| `AGENTS.md` | 明确 AI 执行入口和必读上下文，减少“同类任务不同做法”导致的返工。 | 需要持续维护入口链接与当前阶段信息。 |
+| `ARCHITECTURE.md` | 明确模块边界和 owner，降低跨模块改动的沟通成本。 | 架构变化后需同步更新，否则会误导执行。 |
+| `CONTRIBUTING.md` | 统一开发/提交流程，降低协作摩擦和评审分歧。 | 若与团队现有流程冲突，需先做一次规范对齐。 |
+| `Makefile` | 提供统一执行面（`make verify`），让本地与 CI 行为一致。 | 需要把占位命令替换为项目真实命令。 |
+| `.github/workflows/ci.yml` | 将质量要求转成强制门禁，减少“带病合并”。 | 初期可能增加排队时长和修复成本。 |
+| `scripts/ci/lint.sh` | 提前暴露风格/静态问题，减少后期返工。 | 规则过严会增加误报，需要逐步调优。 |
+| `scripts/ci/test.sh` | 将回归检查标准化，降低线上回归风险。 | 测试基础薄弱项目会先暴露大量历史问题。 |
+| `scripts/ci/eval.sh` | 引入任务质量回归能力，减少 AI 产出漂移。 | 需要持续维护 eval 样本与评分口径。 |
+| `scripts/ci/policy_check.sh` | 在合并前拦截高风险变更，降低事故概率。 | 初期可能出现误拦截，需配合规则分级。 |
+| `policy/high-risk-changes.rego` | 把高风险目录审批规则自动化，提升合规可审计性。 | 目录匹配范围需要按项目实际调整。 |
+| `scripts/metrics/collect_metrics.sh` | 自动产出指标快照/CSV/看板输入，减少人工统计。 | 若数据源仍是占位值，决策价值有限。 |
+| `docs/metrics/engineering-scorecard.md` | 统一指标口径，减少团队对“是否变好”的争议。 | 阈值需按业务阶段校准，避免失真。 |
+| `docs/status/harness-execution-status.md` | 将任务推进透明化，交接成本显著下降。 | 执行中不回写会导致信息迅速失真。 |
+| `docs/handoff/context-handoff.md` | 会话中断时可快速续跑，减少上下文丢失。 | 需要在关键节点及时补全交接信息。 |
+| `docs/scaling/pilot-expansion-gates.md` | 扩圈有明确准入门槛，降低“过早放权”风险。 | 门槛过高可能拖慢扩圈，需要周期复核。 |
+| `scripts/scaling/evaluate_pilot_gate.sh` | 扩圈 gate 可自动判定，减少主观审批波动。 | 输入数据质量直接决定判定可靠性。 |
+| `docs/scaling/pilot-expansion-approval-*.md` | 审批结论可追溯，便于治理审计。 | 需要和真实审批链对齐（人/时限/SLA）。 |
+| `docs/scaling/pilot-expansion-retrospective-*.md` | 扩圈后可结构化复盘，避免重复踩坑。 | 若不执行后续动作，复盘价值会衰减。 |
+| `assets-library/asset-manifest.yaml` | 统一资产索引，提升新项目复用速度。 | 需要版本治理，否则资产会快速失效。 |
+| `docs/scaling/reuse-metrics.md` | 复用率可量化，便于评估平台化收益。 | 指标定义需稳定，否则横向对比失真。 |
+| `scripts/scaling/calc_reuse_metrics.sh` | 复用率计算自动化，降低手工统计成本。 | 依赖输入数据真实性，需防止“填报美化”。 |
+| `docs/ops/rule-quality/rule-quality-metrics.md` | 明确误报率/耗时/阻断价值目标，指导规则优化。 | 需要持续采样，否则无法反映真实趋势。 |
+| `docs/ops/rule-quality/monthly-tuning-report.md` | 月度调优有证据链，避免规则债累积。 | 报告若只记录结果不跟动作，会失去执行力。 |
+| `scripts/ops/calc_rule_quality_metrics.sh` | 规则质量计算标准化，支持跨周期对比。 | 输入字段定义变更时需同步脚本。 |
+| `docs/autonomy/l3-l4-validation-plan.md` | 明确高自治放权与回退边界，降低治理风险。 | 需要坚持按窗口评估，不能跳过周期。 |
+| `docs/autonomy/autonomy-health-report-template.md` | 自治健康报告结构化，便于季度评审决策。 | 模板必须绑定真实数据，避免空转。 |
+| `scripts/autonomy/evaluate_l3l4_window.sh` | L3/L4 稳定性可自动评估，减少主观判断。 | 阈值需结合业务特性调整，不可盲套。 |
+| `templates/service-starter/README.md` | 新项目接入路径清晰，缩短启动时间。 | 模板需定期升级，否则“最佳实践”会过时。 |
+| `.github/ISSUE_TEMPLATE/task.yml` | 需求输入质量提升，减少执行歧义。 | 团队需适应模板字段，初期填写成本上升。 |
+| `.github/pull_request_template.md` | PR 证据标准化，评审效率与可审计性提升。 | 若字段过多，会增加提交阻力，需平衡。 |
+
+### 13.3 目标项目落地步骤（10 个动作）
+
+1. 创建接入分支
+- 在 `<TARGET_REPO>` 创建单独分支，避免和业务需求混改。
+
+2. 落地入口文档
+- 接入并按项目实际改写 `AGENTS.md`、`ARCHITECTURE.md`、`CONTRIBUTING.md`。
+
+3. 接入统一命令入口
+- 迁移 `Makefile` 与 `scripts/ci/*`。
+- 将占位命令替换为目标项目真实命令（lint/test/eval）。
+
+4. 接入 CI 门禁
+- 迁移 `.github/workflows/ci.yml`，确保 PR 失败即阻断。
+
+5. 接入策略检查
+- 迁移 `policy/` 与策略脚本，按目标项目风险目录调路径。
+
+6. 接入指标采集
+- 迁移 `scripts/metrics/collect_metrics.sh`。
+- 先本地可跑，后替换为真实 Git/CI/Issue 数据源。
+
+7. 启用状态总表与交接
+- 在目标项目创建 `docs/status/harness-execution-status.md` 与 `docs/handoff/context-handoff.md`。
+- 任务状态变化必须回写状态表。
+
+8. 启动首轮任务卡
+- 优先执行 P-1 与 P0，再进入 P1/P2/P3。
+- 每张卡单独 PR，并附命令输出、验收证据、风险说明、回滚说明。
+
+9. 执行扩圈与成熟度机制
+- 运行 `P4-01` gate 判定与审批。
+- 运行 `P5-01/P5-02/P5-04` 相关统计和报告。
+
+10. 固化运营节奏
+- 周度：指标和异常复盘。
+- 月度：规则质量调优。
+- 季度：自治健康评审。
+
+### 13.4 可复用命令模板
+
+```bash
+# 基础验证
+make lint
+make test
+make eval
+make verify
+
+# 指标采集
+make metrics
+
+# 扩圈 gate（示例）
+MAJOR_ROLLBACK=false ./scripts/scaling/evaluate_pilot_gate.sh 2026-05-16 \
+  data/scaling/pilot-dashboard-input-2026-05-16.json \
+  data/scaling/pilot-lessons-2026-05-16.md
+
+# 规则质量月度统计（示例）
+./scripts/ops/calc_rule_quality_metrics.sh data/ops/rule-quality-input-2026-05.csv 2026-05
+
+# L3/L4 窗口评估（示例）
+./scripts/autonomy/evaluate_l3l4_window.sh data/autonomy/l3l4-window-2026Q2.csv 2026Q2
+```
+
+### 13.5 项目接入完成判定（最低标准）
+
+满足以下条件可判定“已接入 Harness-Engineering”：
+- `make verify` 稳定通过且 CI 已启用阻断。
+- 状态总表与交接文档开始真实使用。
+- 至少 1 个真实需求完成“任务卡 -> PR -> 证据 -> 发布 -> 复盘”闭环。
+- 至少 1 份可追溯指标输出（JSON/CSV/看板输入）。
+- 高风险变更可被策略命中并进入审批链。
+
+### 13.6 常见失败点与修正
+
+失败点 1：只迁移文档，不迁移脚本和 CI
+- 修正：优先接入 `Makefile + scripts/ci + ci.yml`，保证可执行。
+
+失败点 2：指标长期停留在占位字段
+- 修正：按优先级接通 Git/CI/Issue 实际数据源。
+
+失败点 3：任务完成后不更新状态总表
+- 修正：将“状态回写”设为 PR 必填检查项。
+
+失败点 4：过早提升自治等级
+- 修正：严格执行 `P4 gate` 与 `P5-04` 窗口验证，不达标不升级。
+
+### 13.7 推荐节奏（具体项目版）
+
+第 1-2 天：
+- 入口文档、Makefile、CI 门禁、策略检查接入完成。
+
+第 3-5 天：
+- 指标采集和状态治理跑通，完成首个任务卡闭环。
+
+第 6-10 天：
+- 跑 3-5 个真实需求，完成首轮复盘与规则微调。
+
+第 2-4 周：
+- 运行扩圈 gate，形成审批与复盘记录。
+
+第 2-3 个月：
+- 按周/月/季固定输出治理证据，进入运营态。
+
 
 
 ## 关联文档
