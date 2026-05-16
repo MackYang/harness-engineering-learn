@@ -1,0 +1,94 @@
+# Harness-Engineering 上下文交接记录
+
+> 用途：当上下文不足、会话中断、或任务阻塞时，记录当前进度并移交下一个上下文。
+
+## 交接模板
+- 日期：
+- 当前阶段：
+- 当前任务卡：
+- 当前状态：`IN_PROGRESS / BLOCKED / DONE`
+- 已完成内容：
+- 关键证据文件：
+- 阻塞原因：
+- 需要外部输入：
+- 下一步（最小动作）：
+
+## 当前基线交接（2026-05-15）
+- 日期：2026-05-15
+- 当前阶段：P-1 实施前准备
+- 当前任务卡：多卡并行收尾（重点：P0-02 / P4-01 / P5-01 / P5-02 / P5-04）
+- 当前状态：IN_PROGRESS
+- 当前计数：DONE=27 / IN_PROGRESS=5 / BLOCKED=0 / NOT_STARTED=0
+- 已完成内容：
+  - 三份核心文档已完成并对齐
+  - 状态总表已创建
+  - 交接机制已创建
+  - `CARD-P-1-01` 已完成（临时单人试点版本）
+  - `CARD-P-1-02` 已完成（本地模拟发布回滚演练通过）
+  - `CARD-P-1-03` 已完成（数据源映射+高风险范围+基线样本）
+  - `CARD-P-1-04` 已完成（首轮分配+证据标准+运营日历）
+  - `CARD-P-1-05` 已完成（临时合规边界版本）
+  - 大部分任务卡已完成或进入可执行状态
+  - 所有 NOT_STARTED 任务已消除
+  - `make verify` 通过，CI/Policy 脚本链已跑通
+  - SBOM/Provenance 样例已生成
+- 关键证据文件：
+  - docs/harness-engineering-priority-checklist.md
+  - docs/harness-engineering-task-cards.md
+  - docs/harness-usage-playbook.md
+  - docs/status/harness-execution-status.md
+  - docs/readiness/pilot-charter.md
+  - docs/readiness/raci-matrix.md
+  - docs/readiness/ci-baseline-check.md
+  - docs/readiness/release-rollback-drill.md
+  - docs/readiness/data-source-mapping.md
+  - docs/readiness/high-risk-scope.md
+  - data/readiness/weekly-baseline-sample.json
+  - docs/readiness/first-wave-task-assignment.md
+  - docs/readiness/pr-evidence-standard.md
+  - docs/readiness/operating-calendar.md
+  - docs/readiness/ai-runtime-standard.md
+  - docs/readiness/template-validation-rules.md
+  - docs/readiness/compliance-boundaries.md
+- 阻塞原因：
+  - 无硬阻塞，当前仅剩时间窗口/真实平台验证型 IN_PROGRESS
+- 需要外部输入：
+  - 远端 CI/Issue 平台数据
+  - 连续周度运行数据（用于达成时间窗验收）
+- 下一步（最小动作）：
+  - 按周运行 metrics 采集，推动 P0-02 / P4-01 / P5-01 / P5-02 / P5-04 达成长期验收
+  - 每周更新状态总表中的趋势数据与关闭率
+
+## 当前基线交接（2026-05-16）
+- 日期：2026-05-16
+- 当前阶段：运营维护阶段（全卡完成后滚动治理）
+- 当前任务卡：无（任务卡已全部完成）
+- 当前状态：DONE
+- 当前计数：DONE=32 / IN_PROGRESS=0 / BLOCKED=0 / NOT_STARTED=0
+- 已完成内容：
+  - 全部 32 张任务卡完成并回写状态总表
+  - `CARD-P4-01` 完成首轮扩圈 gate、审批记录与复盘记录
+  - `CARD-P5-01` 完成跨项目资产库与两项目复用率达标证据
+  - `CARD-P5-02` 完成规则分级、两周期质量指标统计与月报
+  - `CARD-P5-04` 完成 8 周稳定性窗口验证与季度健康报告
+  - `make verify` 在最新基线通过
+- 关键证据文件：
+  - `docs/status/harness-execution-status.md`
+  - `docs/scaling/pilot-expansion-gates.md`
+  - `docs/scaling/pilot-expansion-approval-2026-05-16.md`
+  - `docs/scaling/pilot-expansion-retrospective-2026-05-16.md`
+  - `data/scaling/pilot-gate-2026-05-16.json`
+  - `assets-library/asset-manifest.yaml`
+  - `docs/ops/rule-quality/monthly-tuning-report.md`
+  - `data/ops/rule-quality-2026-04.json`
+  - `data/ops/rule-quality-2026-05.json`
+  - `docs/autonomy/autonomy-health-report-2026Q2.md`
+  - `data/autonomy/l3l4-validation-2026Q2.json`
+- 阻塞原因：
+  - 无硬阻塞
+- 需要外部输入：
+  - 远端 CI/Issue/Release 实际数据源（用于替换本地模拟字段）
+- 下一步（最小动作）：
+  - 周度执行 `make metrics` 与对应 gate/quality/autonomy 脚本，滚动更新证据
+  - 月度刷新 `docs/ops/rule-quality/monthly-tuning-report.md`
+  - 季度刷新 `docs/autonomy/autonomy-health-report-*.md`
