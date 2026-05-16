@@ -1,0 +1,23 @@
+{
+  "date": "2026-05-15",
+  "source": "local",
+  "dora": {
+    "lead_time": "pending_remote_pr_data",
+    "deploy_frequency": "pending_release_data",
+    "change_failure_rate": "pending_release_data",
+    "mttr": "under_5_minutes_simulated"
+  },
+  "space": {
+    "satisfaction": "pending_survey",
+    "collaboration_efficiency": "pending_pr_data",
+    "flow_efficiency": "pending_task_data"
+  },
+  "quality": {
+    "eval_pass_rate": "pending_p2_02",
+    "regression_failure_rate": "pending_test_data",
+    "manual_rework_rate": "pending_task_data"
+  },
+  "telemetry": {
+    "git_commits": 0
+  }
+}

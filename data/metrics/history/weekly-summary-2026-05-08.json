@@ -1,0 +1,21 @@
+{
+  "date": "2026-05-08",
+  "source": "simulated",
+  "dora": {
+    "lead_time": "simulated_pending",
+    "deploy_frequency": "simulated_pending",
+    "change_failure_rate": "simulated_pending",
+    "mttr": "under_5_minutes_simulated"
+  },
+  "space": {
+    "satisfaction": "simulated_pending",
+    "collaboration_efficiency": "simulated_pending",
+    "flow_efficiency": "simulated_pending"
+  },
+  "quality": {
+    "eval_pass_rate": "simulated_pending",
+    "regression_failure_rate": "simulated_pending",
+    "manual_rework_rate": "simulated_pending"
+  },
+  "note": "Dry-run simulation data, not real production telemetry"
+}
