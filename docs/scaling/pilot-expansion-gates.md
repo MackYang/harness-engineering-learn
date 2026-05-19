@@ -1,6 +1,6 @@
 # Pilot Expansion Gates（CARD-P4-01）
 
-更新时间：2026-05-16（UTC+8）
+更新时间：2026-05-19（UTC+8）
 
 ## 1. 扩圈准入标准（速度/质量/稳定性）
 - 条件 A（速度+质量+稳定性）：最近连续 2 周核心指标均为 `green`
@@ -64,3 +64,9 @@
 - Gate 输出：`data/scaling/pilot-gate-2026-05-16.json`（`PASS`）
 - 审批记录：`docs/scaling/pilot-expansion-approval-2026-05-16.md`
 - 复盘记录：`docs/scaling/pilot-expansion-retrospective-2026-05-16.md`
+
+## 6. 周度复核证据（运营维护）
+- 2026-05-17 Gate 输出：`data/scaling/pilot-gate-2026-05-17.json`（`HOLD`）
+- 2026-05-17 周度复核记录：`docs/scaling/pilot-expansion-weekly-review-2026-05-17.md`
+- 2026-05-19 Gate 输出：`data/scaling/pilot-gate-2026-05-19.json`（`HOLD`）
+- 2026-05-19 周度复核记录：`docs/scaling/pilot-expansion-weekly-review-2026-05-19.md`

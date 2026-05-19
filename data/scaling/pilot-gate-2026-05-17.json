@@ -1,0 +1,16 @@
+{
+  "week": "2026-05-17",
+  "inputs": {
+    "dashboard_input": "data/metrics/dashboard-input.json",
+    "lessons_file": "docs/incidents/lessons-learned-log.md",
+    "major_rollback": false
+  },
+  "criteria": {
+    "two_week_core_metrics_green": false,
+    "no_major_rollback": true,
+    "closure_rate": 0.00,
+    "closure_rate_threshold": 0.80
+  },
+  "result": "HOLD",
+  "fallback_action": "stay_current_autonomy_level"
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-16",
+  "generated_at": "2026-05-17",
   "window_weeks": 4,
   "trend": [
     {
@@ -55,6 +55,30 @@
       "source": "local",
       "telemetry": {
         "git_commits": 7
+      },
+      "dora": {
+        "lead_time": "pending_remote_pr_data",
+        "deploy_frequency": "pending_release_data",
+        "change_failure_rate": "pending_release_data",
+        "mttr": "under_5_minutes_simulated"
+      },
+      "space": {
+        "satisfaction": "pending_survey",
+        "collaboration_efficiency": "pending_pr_data",
+        "flow_efficiency": "pending_task_data"
+      },
+      "quality": {
+        "eval_pass_rate": "pending_p2_02",
+        "regression_failure_rate": "pending_test_data",
+        "manual_rework_rate": "pending_task_data"
+      },
+      "kpi_status": "pending_threshold_eval"
+    },
+    {
+      "week": "2026-05-17",
+      "source": "local",
+      "telemetry": {
+        "git_commits": 10
       },
       "dora": {
         "lead_time": "pending_remote_pr_data",

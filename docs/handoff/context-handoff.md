@@ -92,3 +92,56 @@
   - 周度执行 `make metrics` 与对应 gate/quality/autonomy 脚本，滚动更新证据
   - 月度刷新 `docs/ops/rule-quality/monthly-tuning-report.md`
   - 季度刷新 `docs/autonomy/autonomy-health-report-*.md`
+
+## 当前基线交接（2026-05-17）
+- 日期：2026-05-17
+- 当前阶段：运营维护阶段（全卡完成后滚动治理）
+- 当前任务卡：周度维护滚动（P0-02 / P4-01 / P5-01）
+- 当前状态：DONE
+- 当前计数：DONE=32 / IN_PROGRESS=0 / BLOCKED=0 / NOT_STARTED=0
+- 已完成内容：
+  - 执行 `make metrics`，新增 `data/metrics/history/weekly-summary-2026-05-17.json`
+  - 生成 `data/scaling/pilot-gate-2026-05-17.json`（结果 `HOLD`）
+  - 生成 `data/scaling/reuse-metrics-2026-05-17.json`（结果 `PASS`）
+  - 状态总表已回写到 2026-05-17
+- 关键证据文件：
+  - `docs/status/harness-execution-status.md`
+  - `docs/scaling/pilot-expansion-weekly-review-2026-05-17.md`
+  - `data/metrics/weekly-summary.json`
+  - `data/metrics/weekly-summary.csv`
+  - `data/metrics/dashboard-input.json`
+  - `data/metrics/history/weekly-summary-2026-05-17.json`
+  - `data/scaling/pilot-gate-2026-05-17.json`
+  - `data/scaling/reuse-metrics-2026-05-17.json`
+- 阻塞原因：
+  - `pilot-gate` 仍为 `HOLD`（最近 2 周 KPI 未标记为 `green`，且 lessons 关闭率未达到阈值）
+- 需要外部输入：
+  - 远端 CI/Issue/Release 实际数据源（替换本地占位指标）
+  - 周会复盘后更新 lessons 关闭状态
+- 下一步（最小动作）：
+  - 在周会中补齐 KPI 红黄绿判定并回写 `dashboard-input` 来源链路
+  - 更新 `docs/incidents/lessons-learned-log.md` 关闭状态后重跑 `evaluate_pilot_gate.sh`
+
+## 当前基线交接（2026-05-19）
+- 日期：2026-05-19
+- 当前阶段：运营维护阶段（全卡完成后滚动治理）
+- 当前任务卡：CARD-P4-01 周度复核
+- 当前状态：DONE
+- 当前计数：DONE=32 / IN_PROGRESS=0 / BLOCKED=0 / NOT_STARTED=0
+- 已完成内容：
+  - 生成 `data/scaling/pilot-gate-2026-05-19.json`（结果 `HOLD`）
+  - 新增 `docs/scaling/pilot-expansion-weekly-review-2026-05-19.md`
+  - `docs/scaling/pilot-expansion-gates.md` 已追加 2026-05-19 复核证据
+  - 状态总表已回写到 2026-05-19
+- 关键证据文件：
+  - `docs/status/harness-execution-status.md`
+  - `docs/scaling/pilot-expansion-gates.md`
+  - `docs/scaling/pilot-expansion-weekly-review-2026-05-19.md`
+  - `data/scaling/pilot-gate-2026-05-19.json`
+- 阻塞原因：
+  - `pilot-gate` 仍为 `HOLD`（最近 2 周 KPI 未标记为 `green`，且 lessons 闭环率仍为 0.00）
+- 需要外部输入：
+  - 周会确认 KPI 红黄绿判定并回写来源链路
+  - 关闭 `docs/incidents/lessons-learned-log.md` 中 OPEN 项
+- 下一步（最小动作）：
+  - 完成 1 条 lessons 闭环后重跑 `evaluate_pilot_gate.sh` 验证闭环率门槛
