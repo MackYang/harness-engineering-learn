@@ -1,4 +1,7 @@
-.PHONY: lint test eval policy verify metrics supply-chain
+.PHONY: lint test eval policy verify metrics supply-chain init
+
+init:
+	@./scripts/harness/init.sh
 
 lint:
 	@./scripts/ci/lint.sh

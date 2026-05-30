@@ -1,0 +1,147 @@
+[
+  {
+    "id": "FEAT-001",
+    "category": "harness-core",
+    "description": "Initializer agent sets up environment: init.sh, progress file, initial git commit",
+    "steps": [
+      "Verify init.sh exists and is executable",
+      "Verify progress file exists",
+      "Verify initial commit is present in git log"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-002",
+    "category": "harness-core",
+    "description": "Coding agent reads git log + progress file to understand current state before starting work",
+    "steps": [
+      "Agent reads git log --oneline -20",
+      "Agent reads progress file",
+      "Agent identifies current task from status"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-003",
+    "category": "harness-core",
+    "description": "Incremental progress: agent works on one feature at a time and commits with descriptive messages",
+    "steps": [
+      "Agent selects next uncompleted feature from feature_list.json",
+      "Agent implements only that feature",
+      "Agent commits with descriptive message",
+      "Agent updates progress file"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-004",
+    "category": "eval",
+    "description": "Evaluator agent is separate from generator and uses real tools (Playwright, tests) to verify",
+    "steps": [
+      "Generator implements a feature",
+      "Evaluator runs automated tests against the feature",
+      "Evaluator marks feature as passes only after verification"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-005",
+    "category": "eval",
+    "description": "Evaluation uses three types of graders: code-based, model-based, human",
+    "steps": [
+      "Code-based grader runs unit tests",
+      "Model-based grader evaluates code quality against rubric",
+      "Results are aggregated into eval results"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-006",
+    "category": "context",
+    "description": "Context engineering: minimal viable set of tools, just-in-time retrieval, progressive disclosure",
+    "steps": [
+      "Tool set is reviewed for redundancy",
+      "Agent uses file paths and queries instead of pre-loading all data",
+      "Context window usage is tracked and optimized"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-007",
+    "category": "architecture",
+    "description": "Brain-hand separation: session (event log), harness (loop), sandbox (execution) are decoupled",
+    "steps": [
+      "Session state is persisted outside the agent context",
+      "Harness can be restarted from session log",
+      "Sandbox is disposable and can be recreated"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-008",
+    "category": "architecture",
+    "description": "Sprint contract: generator and evaluator agree on 'done' criteria before implementation",
+    "steps": [
+      "Generator proposes what it will build",
+      "Evaluator reviews the proposal",
+      "Both agree on testable success criteria"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-009",
+    "category": "security",
+    "description": "Security boundary: credentials never appear in sandbox, accessed via proxy only",
+    "steps": [
+      "Sensitive tokens are not in environment variables accessible to sandbox",
+      "External service access goes through authenticated proxy",
+      "Git push uses pre-configured credentials from vault"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-010",
+    "category": "eval",
+    "description": "Capability evals start at low pass rate, graduate to regression suite at high pass rate",
+    "steps": [
+      "Capability eval suite tracks improvement over time",
+      "Tasks with >90% pass rate graduate to regression suite",
+      "Regression suite runs on every change"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-011",
+    "category": "tools",
+    "description": "Tools use absolute paths, poka-yoke parameter design, and return token-efficient responses",
+    "steps": [
+      "All file operations use absolute paths",
+      "Tool parameters have clear defaults and validation",
+      "Tool responses are concise and structured"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-012",
+    "category": "harness-core",
+    "description": "Self-verification: agent uses browser automation or test tools to verify features end-to-end",
+    "steps": [
+      "Agent runs test suite after each implementation",
+      "Agent uses screenshot or browser tools for visual verification",
+      "Agent only marks feature as passing after e2e verification"
+    ],
+    "passes": false,
+    "priority": "P0"
+  }
+]
