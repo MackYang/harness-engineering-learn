@@ -1,4 +1,4 @@
-.PHONY: lint test eval policy verify metrics supply-chain init
+.PHONY: lint test eval policy verify metrics supply-chain init garden
 
 init:
 	@./scripts/harness/init.sh
@@ -18,7 +18,10 @@ policy:
 metrics:
 	@./scripts/metrics/collect_metrics.sh
 
-verify: lint test eval policy
+garden:
+	@./scripts/ci/doc_gardening.sh --stale-days 30
+
+verify: lint test eval policy garden
 	@echo "Verify completed"
 
 supply-chain:

@@ -1,0 +1,39 @@
+[
+  {
+    "id": "FEAT-001",
+    "category": "harness-core",
+    "description": "环境初始化完成：init.sh 可执行、进度文件存在、初始 commit 存在",
+    "steps": [
+      "Verify init.sh exists and is executable",
+      "Verify progress file exists",
+      "Verify initial commit is present in git log"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-002",
+    "category": "harness-core",
+    "description": "Coding Agent 能读取 git log + progress file 了解当前状态",
+    "steps": [
+      "Read git log --oneline -20",
+      "Read progress file",
+      "Identify current task from status"
+    ],
+    "passes": false,
+    "priority": "P0"
+  },
+  {
+    "id": "FEAT-003",
+    "category": "harness-core",
+    "description": "增量进度：Agent 一次只做一个 feature 并 commit",
+    "steps": [
+      "Select next uncompleted feature from feature_list.json",
+      "Implement only that feature",
+      "Commit with descriptive message",
+      "Update progress file"
+    ],
+    "passes": false,
+    "priority": "P0"
+  }
+]
