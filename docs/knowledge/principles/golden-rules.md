@@ -71,7 +71,13 @@ Types → Config → Repo → Service → Runtime → UI
 ### 13. 验证闭环是自主的前提
 没有验证手段的 Agent 不是真正的 Agent。验证的强度递进：prompt 内检查 → /goal 条件 → Stop hook 确定性门控 → 验证子代理（独立模型反驳结果）。沙箱不是限制而是让 Agent 更自由的框架——OS 级隔离（文件系统 + 网络）安全地减少 84% 权限提示。
 
+### 14. 错误防御工具设计 > Prompt 警告
+在工具层面阻止常见错误（强制绝对路径、唯一性检查），而非在 Prompt 中写"请注意不要..."。工具接口设计比编排逻辑更有价值。字符串替换+唯一性约束是最可靠的代码编辑模式。
+
+### 15. 上下文感知存储
+Harness 存储的中间状态（progress file、feature list）必须包含足够的上下文说明，让一个全新的 Agent session 能无歧义地理解状态。类比 Contextual Retrieval：为每个 chunk 添加上下文注释。
+
 ---
 
 *来源：OpenAI Harness Engineering (2026-06) + Anthropic Engineering Blog*
-*最后更新：2026-06-09*
+*最后更新：2026-06-16*

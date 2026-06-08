@@ -296,5 +296,77 @@
     ],
     "passes": false,
     "priority": "P2"
+  },
+  {
+    "id": "FEAT-025",
+    "category": "tools",
+    "description": "Error-proof tool design: tools prevent common model mistakes at the tool level (e.g., absolute paths, unique match requirements)",
+    "steps": [
+      "Tools validate inputs at the schema level",
+      "Tools return clear error messages for invalid use",
+      "Common failure patterns are blocked by tool design, not by prompt warnings"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-026",
+    "category": "tools",
+    "description": "String replacement editing: use old_str/new_str with uniqueness check instead of line-number based editing",
+    "steps": [
+      "Edit tool uses string replacement pattern",
+      "Replacement fails if old_str matches zero or multiple locations",
+      "Agent receives error message and can retry with more context"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-027",
+    "category": "context",
+    "description": "Contextual storage: intermediate state files include contextual explanations, not just raw data",
+    "steps": [
+      "Feature list includes contextual descriptions alongside status",
+      "Progress file includes reasoning for decisions, not just actions taken",
+      "New agent session can understand state without prior context"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-028",
+    "category": "distribution",
+    "description": "Tool packaging: MCP servers packaged with manifest, dependencies, and user config declarations",
+    "steps": [
+      "Each tool/server has a manifest.json declaring metadata",
+      "Sensitive config uses template variables, stored in OS keychain",
+      "Installation is one-click with no manual config editing"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-029",
+    "category": "retrieval",
+    "description": "Hybrid retrieval: combine semantic embeddings with exact-match (BM25) for knowledge lookup",
+    "steps": [
+      "Knowledge base supports both semantic and keyword search",
+      "Results are merged and deduplicated using rank fusion",
+      "Reranking further filters top results for relevance"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-030",
+    "category": "security",
+    "description": "Credential proxy: sensitive credentials never enter sandbox, accessed via scoped proxy",
+    "steps": [
+      "Git tokens are injected during sandbox init, not passed through agent context",
+      "OAuth tokens stored in vault outside sandbox",
+      "Agent accesses external services through proxy that injects credentials"
+    ],
+    "passes": false,
+    "priority": "P1"
   }
 ]
