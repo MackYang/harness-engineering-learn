@@ -143,5 +143,158 @@
     ],
     "passes": false,
     "priority": "P0"
+  },
+  {
+    "id": "FEAT-013",
+    "category": "security",
+    "description": "Defense-in-depth: environment > model > content layers overlap and complement",
+    "steps": [
+      "Environment layer enforces hard boundaries (sandbox, egress control)",
+      "Model layer uses classifiers and probes (probabilistic, never 100%)",
+      "Content layer limits tool permissions and audits external data sources",
+      "Layers overlap so failure in one is caught by another"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-014",
+    "category": "security",
+    "description": "Egress controls as primary data exfiltration defense: block outbound network from sandbox",
+    "steps": [
+      "Sandbox has no default outbound network access",
+      "Network requests go through authenticated proxy",
+      "POST to external endpoints is blocked regardless of intent"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-015",
+    "category": "eval",
+    "description": "Infrastructure noise mitigation: resource specs specify both guaranteed allocation and kill threshold",
+    "steps": [
+      "Eval config separates guaranteed allocation from hard kill limit",
+      "Gap between floor and ceiling calibrated so scores fall within noise",
+      "Resource configuration documented and reported with eval results"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-016",
+    "category": "harness-core",
+    "description": "Progressive disclosure for agent skills: metadata -> SKILL.md -> additional files on demand",
+    "steps": [
+      "Skill metadata (name+description) pre-loaded into system prompt",
+      "SKILL.md body loaded only when task is relevant",
+      "Additional files loaded on-demand for deep context",
+      "Total skill context is effectively unbounded"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-017",
+    "category": "eval",
+    "description": "Eval awareness mitigation: evals must assume models may identify and exploit evaluation infrastructure",
+    "steps": [
+      "Eval answers are encrypted and access-gated",
+      "Search results containing benchmark names are filtered",
+      "Agent search traces do not create persistent web pages"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-018",
+    "category": "tools",
+    "description": "Tool search/discovery: defer tool loading and let agent discover tools on-demand instead of pre-loading all definitions",
+    "steps": [
+      "Tools marked with defer_loading flag",
+      "Agent searches for relevant tools before invoking",
+      "Only matched tool definitions enter context",
+      "Token usage measured and compared to baseline"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-019",
+    "category": "tools",
+    "description": "Programmatic tool calling: agent orchestrates multiple tools via code execution, intermediate results stay out of context",
+    "steps": [
+      "Agent writes code to orchestrate tool calls",
+      "Intermediate tool results processed in execution environment",
+      "Only final output enters model context",
+      "Parallel tool calls supported in single code block"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-020",
+    "category": "harness-core",
+    "description": "Think tool: provide a scratchpad tool for structured reasoning during long tool call chains and policy-heavy scenarios",
+    "steps": [
+      "Think tool definition added to agent tool set",
+      "System prompt includes domain-specific thinking examples",
+      "Agent uses think tool between tool calls for policy compliance checks",
+      "Performance measured against baseline without think tool"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-021",
+    "category": "architecture",
+    "description": "Multi-agent orchestration: lead agent decomposes tasks and delegates to specialized subagents running in parallel",
+    "steps": [
+      "Lead agent analyzes query and creates subtask descriptions",
+      "Subagents spawned in parallel with separate context windows",
+      "Each subagent has clear objective, output format, and tool guidance",
+      "Lead agent synthesizes subagent results into final answer"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-022",
+    "category": "harness-core",
+    "description": "Verification subagent: separate agent reviews and attempts to refute primary agent's results",
+    "steps": [
+      "Primary agent completes task and produces output",
+      "Verification subagent receives output with fresh context",
+      "Verifier attempts to find errors, missed requirements, or inconsistencies",
+      "Only passes if verifier confirms quality"
+    ],
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-023",
+    "category": "context",
+    "description": "MCP tools as filesystem: present MCP servers as code files for progressive discovery instead of loading all definitions",
+    "steps": [
+      "MCP tools organized as filesystem tree (servers/name/tool.ts)",
+      "Agent explores filesystem to discover available tools",
+      "Agent reads only needed tool definitions on demand",
+      "Token usage drops by >90% vs upfront loading"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-024",
+    "category": "security",
+    "description": "OS-level sandbox: use bubblewrap/seatbelt for filesystem + network isolation instead of application-level checks",
+    "steps": [
+      "Sandbox runtime configured with filesystem and network rules",
+      "All agent processes (including subprocesses) run within sandbox",
+      "Filesystem isolation limits access to working directory",
+      "Network isolation routes through authenticated proxy"
+    ],
+    "passes": false,
+    "priority": "P2"
   }
 ]
