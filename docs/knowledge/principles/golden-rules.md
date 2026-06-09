@@ -77,7 +77,34 @@ Types → Config → Repo → Service → Runtime → UI
 ### 15. 上下文感知存储
 Harness 存储的中间状态（progress file、feature list）必须包含足够的上下文说明，让一个全新的 Agent session 能无歧义地理解状态。类比 Contextual Retrieval：为每个 chunk 添加上下文注释。
 
+## 补充细节（2026-06-09 从原文提取的遗漏要点）
+
+### A. Ralph Wiggum Loop（审查闭环）
+Codex 审查自己变更的流程：本地自审 → 请求其他 Agent 审查（本地+云端）→ 响应人类/Agent 反馈 → 循环直到所有审查者满意。人类可以审查 PR 但不是必须的，审查工作已大幅转向 Agent-to-Agent。
+
+### B. 仓库可启动性（Per-Worktree App Boot）
+每个 git worktree 都能启动一个完整的应用实例，Codex 可以为每个变更启动独立实例。日志和指标通过本地可观测栈暴露（LogQL/PromQL），任务完成后销毁。这让 "确保启动在 800ms 内完成" 这样的 prompt 变得可行。
+
+### C. 单次运行可达 6 小时
+Codex 经常在单个任务上工作超过 6 小时（通常在人类睡觉时）。这说明 Agent 的耐久度和自主性已远超传统认知。
+
+### D. 品味编码的具体例子
+- 结构化日志（静态强制）
+- Schema 和类型的命名规范
+- 文件大小限制
+- 平台特定可靠性要求
+- Lint 错误信息中嵌入修复指令（让 Agent 看到错误时知道怎么修）
+
+### E. "枯燥技术" 的具体含义
+可组合、API 稳定、训练集中表现好的技术。例子：宁可让 Agent 重新实现一个 map-with-concurrency 工具（100% 测试覆盖、与 OpenTelemetry 集成），也不引入 opaque 的第三方 p-limit 库。
+
+### F. 端到端自主的里程碑
+单个 prompt 即可完成：验证代码状态 → 复现 Bug → 录制失败视频 → 实现修复 → 验证修复 → 录制解决视频 → 开 PR → 响应反馈 → 修复构建失败 → 必要时升级给人类 → 合并。
+
+### G. 周五清理日的进化
+初期人类每周五花 20% 时间清理 "AI slop"，后来改为编码 golden principles + 后台 Codex 定期扫描偏差并开重构 PR，大多数 1 分钟内审查完自动合并。
+
 ---
 
 *来源：OpenAI Harness Engineering (2026-06) + Anthropic Engineering Blog*
-*最后更新：2026-06-16*
+*最后更新：2026-06-09*

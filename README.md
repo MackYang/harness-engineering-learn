@@ -8,9 +8,23 @@
 
 ## 📚 知识来源
 
-- [Anthropic Engineering Blog](https://www.anthropic.com/engineering) — 最权威的 AI Agent Harness 设计资料
+### ⭐ 权威知识来源（必须学习，同等重要）
+
+本项目的核心知识来自以下两个官方来源，它们**共同构成权威知识基础**：
+
+- **[OpenAI — Harness Engineering](https://openai.com/index/harness-engineering/)** — OpenAI 团队用 3 名工程师 + Codex，5 个月构建百万行代码产品的实战经验，涵盖 Agent-First 开发、仓库知识管理、品味编码、自主性进化等核心方法论
+- **[Anthropic Engineering Blog](https://www.anthropic.com/engineering)** — Anthropic 官方的 AI Agent Harness 设计、工具编写、评估体系、上下文工程等权威资料
+
+> ⚠️ **重要原则**：OpenAI 和 Anthropic 的官方文档是本项目的**权威知识来源**，所有知识笔记和项目改进必须优先基于这两个来源。其他来源（博客、论文、第三方文章）仅作为补充参考。
+
+### 📖 补充参考
+
 - [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
-- 每周自动学习更新（通过 cron job）
+- [OpenAI Cookbook](https://cookbook.openai.com/)
+
+### 🔄 自动更新
+
+- 每周自动学习 OpenAI + Anthropic 最新文章，更新 `docs/knowledge/`（通过 cron job）
 
 ## 🏗️ 项目结构
 
