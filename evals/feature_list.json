@@ -368,5 +368,117 @@
     ],
     "passes": false,
     "priority": "P1"
+  },
+  {
+    "id": "FEAT-031",
+    "category": "lint",
+    "description": "Lint errors include fix instructions: every lint error message must contain a concrete FIX instruction so agents know what to do without human guidance",
+    "steps": [
+      "Lint script outputs structured error messages",
+      "Each error includes a FIX: line with specific remediation steps",
+      "Agents can self-correct without human intervention"
+    ],
+    "source": "OpenAI — 'Lint errors include fix instructions so agents know what to do'",
+    "passes": true,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-032",
+    "category": "lint",
+    "description": "Golden principles scanner: automated background check that detects deviations from golden rules and reports violations with fix instructions",
+    "steps": [
+      "scripts/ci/golden_principles_check.sh scans 12 principles",
+      "Each violation includes FIX instruction",
+      "Supports --json output for machine-readable integration",
+      "Can be run on regular cadence (CI or cron)"
+    ],
+    "source": "OpenAI — 'Background Codex tasks scan for deviations, update quality grades, and open targeted refactoring PRs'",
+    "passes": true,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-033",
+    "category": "review",
+    "description": "Ralph Wiggum Loop: agent self-reviews changes, requests peer agent reviews, responds to feedback, iterates until all reviewers satisfied",
+    "steps": [
+      "Agent reviews its own changes locally",
+      "Requests additional agent reviews (local and cloud)",
+      "Responds to human and agent feedback",
+      "Loops until all reviewers are satisfied",
+      "Human review is optional, not required"
+    ],
+    "source": "OpenAI — 'Ralph Wiggum Loop' in Harness Engineering",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-034",
+    "category": "architecture",
+    "description": "Per-worktree app boot: each git worktree can launch an isolated app instance with its own logs and metrics for agent validation",
+    "steps": [
+      "App is bootable per git worktree",
+      "Each instance has isolated observability (logs, metrics)",
+      "Agent can launch instance, test changes, destroy when done",
+      "Enables prompts like 'ensure startup completes in under 800ms'"
+    ],
+    "source": "OpenAI — 'We made the app bootable per git worktree'",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-035",
+    "category": "lint",
+    "description": "Boring technology preference: prefer composable, API-stable, well-represented-in-training-set technologies over novel but opaque alternatives",
+    "steps": [
+      "Document technology choices with rationale",
+      "Prefer reimplementing subsets over opaque third-party dependencies",
+      "Ensure 100% test coverage for reimplemented utilities",
+      "Integrate with observability (OpenTelemetry etc.)"
+    ],
+    "source": "OpenAI — 'Technologies described as boring tend to be easier for agents to model'",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-036",
+    "category": "review",
+    "description": "Agent-to-agent review: push review effort towards agent-to-agent rather than human review, with humans as optional reviewers",
+    "steps": [
+      "Automated agent reviewers check code quality",
+      "Agent responds to reviewer feedback automatically",
+      "Human review is optional escalation path",
+      "Review coverage increases without human bottleneck"
+    ],
+    "source": "OpenAI — 'We've pushed almost all review effort towards being handled agent-to-agent'",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-037",
+    "category": "knowledge",
+    "description": "Plans as first-class artifacts: lightweight plans for small changes, execution plans with progress tracking for complex work, all versioned in repo",
+    "steps": [
+      "Small changes use ephemeral lightweight plans",
+      "Complex work uses execution plans with progress and decision logs",
+      "Active plans, completed plans, and tech debt are versioned together",
+      "Agents operate without relying on external context"
+    ],
+    "source": "OpenAI — 'Plans are treated as first-class artifacts'",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-038",
+    "category": "quality",
+    "description": "Quality grading per domain: document grading each product domain and architectural layer, tracking gaps over time",
+    "steps": [
+      "Quality document grades each domain",
+      "Grades tracked over time to show improvement/regression",
+      "Background tasks update quality grades automatically",
+      "Gaps identified and targeted for improvement"
+    ],
+    "source": "OpenAI — 'A quality document grades each product domain and architectural layer, tracking gaps over time'",
+    "passes": false,
+    "priority": "P2"
   }
 ]

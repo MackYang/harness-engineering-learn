@@ -58,6 +58,35 @@
 - 绝对路径 — 所有文件操作使用绝对路径
 - 给地图不给说明书 — 不要写巨大的指令文件
 
+## Agent Workflows（OpenAI 最佳实践）
+
+### Ralph Wiggum Loop（审查闭环）
+Agent 完成任务的标准流程：
+1. 本地自审变更 → 发现问题立即修复
+2. 请求其他 Agent 审查（本地+云端）→ 收集反馈
+3. 响应人类/Agent 反馈 → 迭代修复
+4. 循环直到所有审查者满意 → 合并
+
+> 人类审查是可选的，不是必须的。审查工作应尽量推向 Agent-to-Agent。
+
+### 品味编码（Encode Taste）
+人类审查反馈必须转化为代码规则，而非口头提醒：
+- 反复出现的问题 → 加到 lint 规则
+- Lint 错误信息必须包含修复指令 → Agent 看到就知道怎么修
+- 架构偏好 → 编码为分层 linter 机械执行
+- 每次人类 review 发现的新问题 → 更新 golden principles
+
+### 垃圾回收（Continuous GC）
+- 运行 `make principles` 检测 golden principles 偏差
+- 运行 `make garden` 检测过时文档
+- 偏差发现后立即修复，不要让技术债累积
+
+### 计划即工件（Plans as Artifacts）
+- 小变更：轻量临时计划
+- 复杂工作：正式执行计划（含进度和决策日志）
+- 所有计划版本化存放在仓库中
+- Agent 不依赖外部上下文，一切从仓库获取
+
 ## Architecture Layers
 
 ```

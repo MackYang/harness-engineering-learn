@@ -1,4 +1,4 @@
-.PHONY: lint test eval policy verify metrics supply-chain init garden
+.PHONY: lint test eval policy verify metrics supply-chain init garden principles
 
 init:
 	@./scripts/harness/init.sh
@@ -21,7 +21,12 @@ metrics:
 garden:
 	@./scripts/ci/doc_gardening.sh --stale-days 30
 
+principles:
+	@./scripts/ci/golden_principles_check.sh
+
 verify: lint test eval policy garden
+	@echo "=== Golden Principles Check ==="
+	@-./scripts/ci/golden_principles_check.sh
 	@echo "Verify completed"
 
 supply-chain:
