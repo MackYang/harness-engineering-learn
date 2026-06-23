@@ -9,14 +9,20 @@
 docs/knowledge/
 ├── README.md              ← 你正在读的索引文件
 ├── principles/            ← 核心设计原则
-│   ├── golden-rules.md    ← 十大黄金原则（OpenAI 权威来源）
-│   └── context-engineering.md  ← 上下文工程原则
+│   ├── golden-rules.md            ← 十五大黄金原则（OpenAI/Anthropic 来源）
+│   ├── operational-principles.md  ← 项目操作原则（15 条执行纪律）
+│   └── context-engineering.md     ← 上下文工程原则
 ├── patterns/              ← Agent 工作流和架构模式
-│   ├── agent-workflows.md ← Anthropic 的 5 种工作流模式
-│   ├── eval-patterns.md   ← 评估模式（Generator ≠ Evaluator）
-│   └── architecture-patterns.md  ← 分层架构与约束执行
-└── sources/               ← 权威来源学习笔记
-    └── anthropic-harness-engineering-knowledge-2026-05-30.md  ← 已有笔记
+│   ├── agent-workflows.md         ← Anthropic 的 5 种工作流模式
+│   ├── eval-patterns.md           ← 评估模式（Generator ≠ Evaluator）
+│   └── architecture-patterns.md   ← 分层架构与约束执行
+└── sources/               ← 权威来源学习笔记（按日期归档）
+    ├── anthropic-harness-engineering-knowledge-2026-05-30.md
+    ├── anthropic-engineering-2026-06-08.md
+    ├── anthropic-engineering-2026-06-09.md
+    ├── anthropic-engineering-2026-06-16.md
+    ├── anthropic-managed-agents-2026-04-08.md                ← Meta-Harness 接口设计
+    └── anthropic-long-running-apps-2026-03-24.md             ← GAN 三 Agent + Sprint Contract
 ```
 
 ## 按场景导航

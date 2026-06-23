@@ -1,4 +1,4 @@
-# Harness Engineering 十三大黄金原则
+# Harness Engineering 十五大黄金原则
 
 > 权威来源：OpenAI — [Harness Engineering](https://openai.com/index/harness-engineering/)
 > 核心概念：人类掌舵，Agent 执行。工程师不再是写代码，而是设计环境、明确意图、构建反馈回路。
@@ -60,7 +60,7 @@ Types → Config → Repo → Service → Runtime → UI
 5. **"枯燥"的技术对 Agent 更友好**
 6. **构建软件仍然需要纪律**，但纪律更多体现在支撑结构上
 
-## 三大补充原则（2026-06-09 基于 Anthropic 新文章提炼）
+## 五大补充原则（2026-06-09 / 2026-06-23 基于 Anthropic 新文章提炼）
 
 ### 11. 按需发现 > 预加载
 工具定义、上下文、技能都应按需加载，而非一次性塞入上下文窗口。Tool Search Tool（85% token 节省）、MCP-as-filesystem（98.7% token 节省）都证明了这一点。这与原则 2（给地图不给说明书）和原则 1 中上下文是稀缺资源的理念完全一致。
