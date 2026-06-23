@@ -6,7 +6,9 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# 注：init.sh 位于 scripts/harness/，需要上两级才到仓库根。
+# 原实现只上一级（指向 scripts/），导致所有 PROJECT_ROOT/* 路径错误并在 scripts/ 下创建 stray 文件。
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 PROGRESS_FILE="$PROJECT_ROOT/harness-progress.txt"
 FEATURE_LIST="$PROJECT_ROOT/evals/feature_list.json"
 

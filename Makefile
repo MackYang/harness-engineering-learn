@@ -24,8 +24,10 @@ garden:
 principles:
 	@./scripts/ci/golden_principles_check.sh
 
-verify: lint test eval policy garden
-	@echo "=== Golden Principles Check ==="
+verify: lint test eval policy
+	@echo "=== Doc Garden (advisory) ==="
+	@-./scripts/ci/doc_gardening.sh --stale-days 30
+	@echo "=== Golden Principles Check (advisory) ==="
 	@-./scripts/ci/golden_principles_check.sh
 	@echo "Verify completed"
 

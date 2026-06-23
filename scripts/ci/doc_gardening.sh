@@ -25,12 +25,19 @@ echo ""
 # 1. 检查文档新鲜度
 echo "--- Freshness Check ---"
 while IFS= read -r -d '' file; do
-  last_commit_date=$(git -C "$REPO_ROOT" log -1 --format="%ci" -- "$file" 2>/dev/null || echo "1970-01-01")
-  days_since=$(( ( $(date +%s) - $(date -d "$last_commit_date" +%s 2>/dev/null || echo 0) ) / 86400 ))
+  # 使用 %ct（Unix 时间戳）而非 %ci + date -d，跨 macOS/Linux 可移植
+  # 注：原实现用 GNU date -d 在 macOS（BSD date）下失败，导致所有文件都显示 56 年 stale
+  last_commit_ts=$(git -C "$REPO_ROOT" log -1 --format="%ct" -- "$file" 2>/dev/null)
+  if [[ -z "$last_commit_ts" ]]; then
+    # 未跟踪文件或无 git 历史 — 视为新鲜（刚创建）
+    continue
+  fi
+  days_since=$(( ( $(date +%s) - last_commit_ts ) / 86400 ))
+  last_commit_date=$(git -C "$REPO_ROOT" log -1 --format="%ci" -- "$file" 2>/dev/null)
   if (( days_since > STALE_DAYS )); then
     echo "⚠️  STALE (${days_since}d): $file (last updated: ${last_commit_date:0:10})"
     STALE_FILES+=("$file")
-    ((ISSUES++))
+    ((ISSUES++)) || true
   fi
 done < <(find "$REPO_ROOT/docs" -name "*.md" -print0 2>/dev/null)
 

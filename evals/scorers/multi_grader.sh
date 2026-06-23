@@ -131,16 +131,16 @@ if [[ -d "$kb_dir" ]]; then
     echo "  ✗ No recent knowledge files"
   fi
   
-  # Check for the 10 principles
-  if grep -q "增量优先" "$kb_dir"/*.md 2>/dev/null; then
+  # Check for the 15 operational principles (recursive — they live in principles/ subdir)
+  if grep -rq "增量优先" "$kb_dir" 2>/dev/null; then
     kb_score=$((kb_score + 1))
     echo "  ✓ Core principles documented"
   else
     echo "  ✗ Core principles missing"
   fi
-  
-  # Check for references
-  if grep -q "anthropic.com/engineering" "$kb_dir"/*.md 2>/dev/null; then
+
+  # Check for references (recursive)
+  if grep -rq "anthropic.com/engineering" "$kb_dir" 2>/dev/null; then
     kb_score=$((kb_score + 1))
     echo "  ✓ Source references included"
   else

@@ -107,12 +107,23 @@ else
   log_fail "GP-08" "Knowledge source files not date-stamped" "Rename notes with format: {source}-YYYY-MM-DD.md"
 fi
 
-# GP-09: 没有超过 500 行的 Markdown
-oversized=$(find "$REPO_ROOT/docs" -name '*.md' -exec sh -c 'test $(wc -l < "$1") -gt 500 && echo "$1"' _ {} \; 2>/dev/null || true)
-if [[ -z "$oversized" ]]; then
+# GP-09: 没有超过 500 行的 Markdown（navigation 类）
+# OpenAI 原则针对的是 navigation 文件（"给地图不给说明书"），不是 reference 文件。
+# 因此：默认检查 docs/ 下所有 .md；但允许通过文件顶部标记 <!-- gp-09-exempt: <reason> --> 显式豁免。
+oversized=""
+while IFS= read -r -d '' f; do
+  lines=$(wc -l < "$f")
+  if (( lines > 500 )); then
+    # 检查前 20 行是否有豁免标记
+    if ! head -20 "$f" | grep -q 'gp-09-exempt'; then
+      oversized="$oversized $f"
+    fi
+  fi
+done < <(find "$REPO_ROOT/docs" -name '*.md' -print0 2>/dev/null)
+if [[ -z "${oversized// /}" ]]; then
   log_pass "GP-09"
 else
-  log_fail "GP-09" "Oversized docs (>500 lines): $oversized" "Split large files. Progressive disclosure — each file should focus on one topic."
+  log_fail "GP-09" "Oversized docs (>500 lines without gp-09-exempt marker):$oversized" "Split large files, OR add '<!-- gp-09-exempt: <reason> -->' to the top of the file if it's a legitimate reference doc (not navigation)."
 fi
 
 # GP-10: 文档新鲜度（60 天内更新过）
