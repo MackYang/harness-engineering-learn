@@ -1,9 +1,9 @@
 {
-  "timestamp": "20260623_152118",
+  "timestamp": "20260623_150123",
   "graders": {
     "file_structure": {"score": 14, "total": 14, "pct": 100.0},
     "script_exec": {"score": 17, "total": 17, "pct": 100.0},
-    "json_validity": {"score": 29, "total": 29, "pct": 100.0},
+    "json_validity": {"score": 25, "total": 25, "pct": 100.0},
     "feature_structure": {"score": 4, "total": 4, "pct": 100.0},
     "knowledge_base": {"score": 3, "total": 3, "pct": 100.0}
   },

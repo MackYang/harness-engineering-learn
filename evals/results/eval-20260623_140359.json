@@ -1,12 +1,12 @@
 {
-  "timestamp": "20260623_152118",
+  "timestamp": "20260623_140359",
   "graders": {
     "file_structure": {"score": 14, "total": 14, "pct": 100.0},
     "script_exec": {"score": 17, "total": 17, "pct": 100.0},
-    "json_validity": {"score": 29, "total": 29, "pct": 100.0},
+    "json_validity": {"score": 21, "total": 21, "pct": 100.0},
     "feature_structure": {"score": 4, "total": 4, "pct": 100.0},
-    "knowledge_base": {"score": 3, "total": 3, "pct": 100.0}
+    "knowledge_base": {"score": 2, "total": 3, "pct": 66.7}
   },
-  "overall_pct": 100.0,
+  "overall_pct": 93.3,
   "verdict": "PASS"
 }
