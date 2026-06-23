@@ -24,7 +24,7 @@
 
 ### 🔄 自动更新
 
-- 每周自动学习 OpenAI + Anthropic 最新文章，更新 `docs/knowledge/`（通过 cron job）
+- 每周通过 cron workflow 自动创建 issue 提醒更新 `docs/knowledge/`（见 `.github/workflows/weekly-knowledge.yml`；抓取与笔记撰写仍为人工，自动化路线图见 issue 模板）
 
 ## 🏗️ 项目结构
 
@@ -41,7 +41,7 @@
 │   ├── ci/                            # CI 门禁脚本
 │   └── metrics/                       # 指标采集
 ├── docs/
-│   ├── knowledge/                     # 权威知识笔记 (每周更新)
+│   ├── knowledge/                     # 权威知识笔记 (每周提醒更新)
 │   ├── status/                        # 执行状态追踪
 │   └── ...                            # 各阶段文档
 ├── policy/                            # Policy-as-Code
@@ -62,7 +62,9 @@ make verify
 make eval
 ```
 
-## 📋 Harness Engineering 十三大原则
+## 📋 Harness Engineering 十五大原则
+
+> 与 `docs/knowledge/principles/golden-rules.md` 对齐（10 条原始来源 + 5 条补充）。
 
 1. **增量优先**：一次一个 feature，禁止 one-shot
 2. **外部记忆**：用文件（JSON/progress log）保存跨 session 状态
@@ -77,6 +79,8 @@ make eval
 11. **按需发现**：工具定义、上下文、技能按需加载，不预加载所有内容
 12. **代码编排**：复杂工具调用链用代码执行环境编排，中间结果不污染上下文
 13. **验证闭环**：没有验证手段的 Agent 不是真正的 Agent，沙箱是自主的赋能者
+14. **错误防御工具设计**：工具层面阻止常见错误（强制绝对路径、唯一匹配检查），优于在 prompt 中写警告
+15. **上下文感知存储**：中间状态文件（progress、feature list）必须包含足够的上下文说明，让新 session 无歧义理解状态
 
 ## 📖 业务项目接入指南
 
@@ -97,6 +101,6 @@ make eval
 
 ## 🔄 更新机制
 
-- **知识更新**：每周自动学习最新文章，更新 `docs/knowledge/`
+- **知识更新**：每周 cron workflow 自动创建 issue 提醒（`.github/workflows/weekly-knowledge.yml`），人工执行抓取与笔记撰写
 - **指标更新**：`make metrics` 采集最新指标
 - **评估更新**：`make eval` 运行最新评估

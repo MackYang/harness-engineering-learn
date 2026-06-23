@@ -1,3 +1,6 @@
+<!-- gp-09-exempt: 业务接入完整指南（reference guide），按章节顺序覆盖 10 周落地节奏。
+     不是 navigation 文件；读者按需跳转章节，拆分会破坏 cross-reference。 -->
+
 # Harness Engineering 业务项目接入指南
 
 > 本文档详细说明如何将本仓库的 Harness Engineering 成果应用到具体业务项目中。

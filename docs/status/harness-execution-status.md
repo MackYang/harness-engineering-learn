@@ -1,7 +1,18 @@
 # Harness-Engineering 执行状态总表
 
 > 规则：每完成或阻塞一张任务卡，必须立即更新本文件。
-> 更新时间（UTC+8）：2026-05-19
+> 更新时间（UTC+8）：2026-06-23
+
+## ⚠️ 语义澄清：任务卡 DONE ≠ Feature 通过
+
+本文件跟踪**项目脚手架**完成度（文档/脚本是否写出来）。`evals/feature_list.json` 跟踪 **Harness 行为**是否真的在跑（Agent 是否真的会读状态、增量提交、独立验证）。两者是独立轨道：
+
+| 轨道 | 衡量什么 | 当前数 | 权威文件 |
+|------|---------|--------|----------|
+| 任务卡 | 脚手架产物（docs/scripts/policy） | 32/32 DONE | 本文件 |
+| Feature | Harness 行为真实通过 | 2/38 passes | `evals/feature_list.json` |
+
+**不要把任务卡 DONE 等同于 feature 通过。** 看真实能力请查 `evals/feature_list.json` 和 `evals/results/`。
 
 ## 状态定义
 - `NOT_STARTED`：未开始
@@ -53,7 +64,29 @@
 | CARD-P5-03 | DONE | 2026-05-15 | `docs/org/human-ai-roles-matrix.md`, `docs/org/escalation-runbook.md`, `docs/org/onboarding-certification.md` | 组织演练并收敛改进项 |
 | CARD-P5-04 | DONE | 2026-05-16 | `docs/autonomy/l3-l4-validation-plan.md`, `docs/autonomy/autonomy-health-report-template.md`, `scripts/autonomy/evaluate_l3l4_window.sh`, `data/autonomy/l3l4-window-2026Q2.csv`, `data/autonomy/l3l4-events-2026Q2.csv`, `data/autonomy/l3l4-validation-2026Q2.json`, `docs/autonomy/autonomy-health-report-2026Q2.md` | 在 2026Q3 窗口继续验证 L4 放权条件 |
 
-## 2. 已完成记录
+## 2. 已知占位债清单（DONE-scaffold 但后续要补）
+
+> 这些任务卡的脚手架产物已落地并标记 DONE，但"下一步"列明示了需要业务接入或真实数据才能完成的占位项。
+> 与 ADR-0004 的"任务卡 DONE ≠ feature 通过"语义一致：DONE 指脚手架完成，不包含占位项替换。
+
+| Task ID | 占位债 | 触发条件 | 当前状态 |
+|---------|--------|---------|---------|
+| CARD-P-1-01 | 临时签字 → 正式签字 | 组织正式授权 | 待外部输入 |
+| CARD-P-1-02 | 本地模拟演练 → 真实环境演练 | 真实 CI/CD 环境访问 | 待外部输入 |
+| CARD-P-1-03 | 接入真实 Issue 平台 | Issue 平台选定 | 待外部输入 |
+| CARD-P-1-05 | 临时合规边界 → 组织政策迭代 | 合规政策下发 | 待外部输入 |
+| CARD-P0-02 | 占位指标 → 远端 Git/CI/Issue 数据源 | 数据源访问权限 | 待外部输入 |
+| CARD-P0-07 | 本地 CI → 远端分支保护 | 仓库迁移到 GitHub Org | 待外部输入 |
+| CARD-P1-02 | 当前 5 个 ADR → 持续补录 | 高影响变更发生 | 滚动（已加 ADR-0004） |
+| CARD-P1-03 | 占位 Makefile 命令 → 真实命令 | 业务代码接入 | 待外部输入 |
+| CARD-P2-01 | 测试策略 → 真实覆盖率数据 | 业务测试套件 | 待外部输入 |
+| CARD-P2-02 | 占位评分 → 真实评分 | grader 接入真实 model/human | 部分（Grader 5 已修，其他 grader 待） |
+| CARD-P2-04 | 本地 SBOM → CI 自动生成 | CI 接入 supply chain 工具 | 待外部输入 |
+| CARD-P4-01 | 按周复核 gate | 周度运营节奏 | 滚动（最新 5-19） |
+
+**统计**：12 项中 2 项滚动维护中（P1-02、P4-01）、1 项部分完成（P2-02）、9 项待外部输入。
+
+## 3. 已完成记录
 - 2026-05-15：清单体系搭建完成（主清单、任务卡、使用手册、成熟度 P5、实施准备 P-1）。
 - 2026-05-15：CARD-P-1-01 完成（临时单人试点版本，待正式签字替换）。
 - 2026-05-15：CARD-P-1-02 完成（本地模拟发布/回滚演练通过）。

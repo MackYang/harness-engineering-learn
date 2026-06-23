@@ -22,7 +22,7 @@
 ### 场景：写代码/实现功能
 1. 先读 `ARCHITECTURE.md` → 理解系统分层和依赖方向
 2. 读 `CONTRIBUTING.md` → 理解提交规范和 PR 流程
-3. 参考 `docs/principles/` → 核心设计原则
+3. 参考 `docs/knowledge/principles/operational-principles.md` → 项目操作原则（15 条执行纪律）
 4. 实现后运行 `make verify` 验证
 
 ### 场景：上下文不足/会话中断
@@ -31,9 +31,10 @@
 
 ### 场景：学习 Harness Engineering 知识
 1. 入门：`docs/knowledge/README.md` → 知识库索引
-2. 核心原则：`docs/knowledge/principles/` → 十大黄金原则
-3. 实战模式：`docs/knowledge/patterns/` → Agent 工作流和架构模式
-4. 权威来源笔记：`docs/knowledge/sources/` → 原始学习笔记
+2. 项目操作原则：`docs/knowledge/principles/operational-principles.md` → 15 条执行纪律
+3. 来源原则：`docs/knowledge/principles/golden-rules.md` → OpenAI/Anthropic 提炼的 15 条原理
+4. 实战模式：`docs/knowledge/patterns/` → Agent 工作流和架构模式
+5. 权威来源笔记：`docs/knowledge/sources/` → 原始学习笔记（按日期归档）
 
 ### 场景：评估/验证
 1. 运行 `make eval` → 执行评估

@@ -1,0 +1,53 @@
+# Harness Progress Log
+
+> 用途：跨 session 的外部记忆。每个 Agent session 开始时读取本文件理解当前状态。
+> 规则：每完成一个 feature 或重要动作，**追加**一条记录（不要覆盖历史）。
+> 上下文说明：本文件遵循原则 15（上下文感知存储），记录包含 reasoning 而非纯动作。
+
+## 当前状态快照（2026-06-23）
+
+- 任务卡完成度：32/32 DONE（见 `docs/status/harness-execution-status.md`）
+- feature_list.json 通过率：2/38（见 `evals/feature_list.json`）
+- **重要语义区分**：
+  - 任务卡衡量**项目脚手架**完成度（文档/脚本是否写出来）
+  - feature 衡量**Harness 行为**是否真的在跑（agent 是否真的会读状态、增量提交、独立验证）
+  - 两条轨道独立，不要把任务卡 DONE 等同于 feature passes
+
+## 最近变更
+
+### 2026-06-23（第 3+4 批）
+- ARCHITECTURE.md 重写：明确"知识架构 vs 目标分层架构 vs Meta-Harness 三组件"三个概念
+- CONTRIBUTING.md 扩充：加入场前清单、跑 `make verify`（非单独 lint）、追加 `harness-progress.txt`、高影响变更触发 ADR
+- 新增 ADR-0004：记录 task DONE vs feature passes 双轨语义、garden advisory 化、operational-principles 加入等决策
+- 充实 3 个原空文档：`templates/service-starter/README.md`、`docs/org/escalation-runbook.md`、`docs/org/onboarding-certification.md`
+- 在 status doc 新增 §2 "已知占位债清单"：12 项显式列出（2 滚动 / 1 部分 / 9 待外部输入）
+- GP-09 改为支持 opt-out 标记 `<!-- gp-09-exempt: <reason> -->`，task-cards.md 和 GUIDE 加豁免说明
+- **make verify 全绿**：12/12 golden principles 通过
+
+### 2026-06-23（第 1+2 批）
+- 补齐两篇核心 Anthropic 知识笔记：
+  - `docs/knowledge/sources/anthropic-managed-agents-2026-04-08.md`（Meta-Harness 接口设计）
+  - `docs/knowledge/sources/anthropic-long-running-apps-2026-03-24.md`（GAN 式三 Agent + Sprint Contract + Evaluator 调参）
+- 同步 README 与 `golden-rules.md` 的原则数量为十五条
+- 创建本文件（之前 `init.sh` / AGENTS.md / FEAT-001 都引用但文件不存在）
+- 在 `docs/status/harness-execution-status.md` 顶部澄清"任务卡 DONE ≠ feature 通过"
+- ci.yml 改跑 `make verify`；新增 weekly-knowledge.yml（每周 cron issue 提醒）
+- 修复 doc_gardening.sh GNU date -d 跨平台 bug；Makefile garden 改为 advisory
+- 修复 multi_grader.sh Grader 5 非递归 grep bug（eval 93.3% → 100%）
+
+### 2026-05-19（项目最后真实活动）
+- CARD-P4-01 周度复核（pilot-gate-2026-05-19.json 结论 HOLD）
+
+## 下一步候选（按 ROI 排序）
+
+1. 跑 `make eval` 把 6/9 之后缺的两周补上
+2. 把 FEAT-001 ~ FEAT-005 这几个 P0 feature 真正跑通（init.sh 自检、progress 读取、增量提交、独立 evaluator）
+3. 评估是否要加入"原则 16 — Harness 简化纪律"（来自 long-running apps 文章）
+
+## 如何接续
+
+新 session 进来后：
+1. 读本文件理解当前进度
+2. 读 `docs/status/harness-execution-status.md` 看任务卡
+3. 读 `evals/feature_list.json` 看真实通过率
+4. 选下一步候选 → 执行 → 追加记录到本文件

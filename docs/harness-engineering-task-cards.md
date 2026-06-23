@@ -1,3 +1,6 @@
+<!-- gp-09-exempt: 这是任务卡参考目录（reference catalog），按 P-1→P5 顺序索引 32 张卡。
+     不是 navigation 文件；按 phase 拆分会破坏 grep/搜索便利性。OpenAI 原则针对 AGENTS.md 类导航文件。 -->
+
 # Harness-Engineering 任务卡清单（AI Coding 友好版）
 
 > 使用方式：AI 每次只领取 1 张任务卡，完成后提交 PR，并附该卡的验收证据。
