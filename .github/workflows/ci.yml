@@ -12,22 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Baseline check
+      - name: Verify (lint + test + eval + policy + garden + principles)
         run: |
-          echo "CI baseline workflow is active."
-
-      - name: Lint
-        run: |
-          make lint
-
-      - name: Test
-        run: |
-          make test
-
-      - name: Eval
-        run: |
-          make eval
-
-      - name: Policy
-        run: |
-          make policy
+          make verify

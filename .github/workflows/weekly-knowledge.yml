@@ -1,0 +1,50 @@
+name: Weekly Knowledge Refresh Reminder
+
+on:
+  schedule:
+    # 每周一 08:57 UTC = 16:57 UTC+8（避开整点：减少 API 拥堵）
+    - cron: '57 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create weekly knowledge refresh issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const date = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Weekly knowledge refresh (${date})`,
+              body: [
+                '## 任务',
+                '',
+                '本 issue 由 `.github/workflows/weekly-knowledge.yml` 自动创建。',
+                '',
+                '请执行：',
+                '1. 检查 [Anthropic Engineering Blog](https://www.anthropic.com/engineering) 是否有新文章',
+                '2. 检查 [OpenAI — Harness Engineering](https://openai.com/index/harness-engineering/) 是否有更新',
+                '3. 如有新内容，按 `docs/knowledge/sources/` 命名约定（`anthropic-engineering-YYYY-MM-DD.md` 或 `anthropic-<slug>-YYYY-MM-DD.md`）写新笔记',
+                '4. 把新原则提炼到 `docs/knowledge/principles/golden-rules.md`',
+                '5. 更新 `harness-progress.txt` 与 `docs/handoff/context-handoff.md`',
+                '6. 关闭本 issue',
+                '',
+                '## 自动化路线图',
+                '',
+                '- **当前**：cron 触发 + 人工抓取 + 人工写笔记',
+                '- **未来**：自动抓取 + 自动 PR（待实现，需文章发现脚本）',
+                '',
+                '## 参考来源（README 指定的权威）',
+                '',
+                '- OpenAI — Harness Engineering',
+                '- Anthropic Engineering Blog',
+                '- 其他来源仅作补充参考'
+              ].join('\n'),
+              labels: ['knowledge-refresh']
+            });
