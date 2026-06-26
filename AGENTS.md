@@ -22,7 +22,8 @@
 ### 场景：写代码/实现功能
 1. 先读 `ARCHITECTURE.md` → 理解系统分层和依赖方向
 2. 读 `CONTRIBUTING.md` → 理解提交规范和 PR 流程
-3. 参考 `docs/knowledge/principles/operational-principles.md` → 项目操作原则（15 条执行纪律）
+3. 参考 `docs/knowledge/principles/operational-principles.md` → 项目操作原则
+4. 参考 `docs/knowledge/principles/loop-engineering-principles.md` → Loop Engineering 构件原则
 4. 实现后运行 `make verify` 验证
 
 ### 场景：上下文不足/会话中断
@@ -32,9 +33,10 @@
 ### 场景：学习 Harness Engineering 知识
 1. 入门：`docs/knowledge/README.md` → 知识库索引
 2. 项目操作原则：`docs/knowledge/principles/operational-principles.md` → 15 条执行纪律
-3. 来源原则：`docs/knowledge/principles/golden-rules.md` → OpenAI/Anthropic 提炼的 15 条原理
-4. 实战模式：`docs/knowledge/patterns/` → Agent 工作流和架构模式
-5. 权威来源笔记：`docs/knowledge/sources/` → 原始学习笔记（按日期归档）
+3. 来源原则：`docs/knowledge/principles/golden-rules.md` → 19 条黄金原则
+4. Loop 原则：`docs/knowledge/principles/loop-engineering-principles.md` → 六大构件原则 + 检查清单
+5. 实战模式：`docs/knowledge/patterns/` → Agent 工作流和架构模式
+6. 权威来源笔记：`docs/knowledge/sources/` → 原始学习笔记（按日期归档）
 
 ### 场景：评估/验证
 1. 运行 `make eval` → 执行评估
@@ -104,6 +106,7 @@ Types → Config → Repo → Service → Runtime → UI
 | `docs/harness-engineering-priority-checklist.md` | 优先级主清单 |
 | `docs/handoff/context-handoff.md` | 上下文交接 |
 | `docs/knowledge/README.md` | 知识库索引 |
+| `docs/knowledge/principles/loop-engineering-principles.md` | Loop Engineering 六大构件原则 |
 | `evals/feature_list.json` | 功能清单和验证状态 |
 | `ARCHITECTURE.md` | 系统架构 |
 | `CONTRIBUTING.md` | 贡献规范 |

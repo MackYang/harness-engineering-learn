@@ -30,10 +30,12 @@ jobs:
                 '请执行：',
                 '1. 检查 [Anthropic Engineering Blog](https://www.anthropic.com/engineering) 是否有新文章',
                 '2. 检查 [OpenAI — Harness Engineering](https://openai.com/index/harness-engineering/) 是否有更新',
-                '3. 如有新内容，按 `docs/knowledge/sources/` 命名约定（`anthropic-engineering-YYYY-MM-DD.md` 或 `anthropic-<slug>-YYYY-MM-DD.md`）写新笔记',
-                '4. 把新原则提炼到 `docs/knowledge/principles/golden-rules.md`',
-                '5. 更新 `harness-progress.txt` 与 `docs/handoff/context-handoff.md`',
-                '6. 关闭本 issue',
+                '3. 检查 [Addy Osmani — Loop Engineering](https://addyosmani.com/blog/loop-engineering/) 是否有更新',
+                '4. 检查 [Addy Osmani — Agent Harness Engineering](https://addyosmani.com/blog/agent-harness-engineering/) 是否有更新',
+                '5. 如有新内容，按 `docs/knowledge/sources/` 命名约定写新笔记',
+                '6. 把新原则提炼到 `docs/knowledge/principles/golden-rules.md` 或 `loop-engineering-principles.md`',
+                '7. 更新 `harness-progress.txt` 与 `docs/handoff/context-handoff.md`',
+                '8. 关闭本 issue',
                 '',
                 '## 自动化路线图',
                 '',
@@ -44,7 +46,8 @@ jobs:
                 '',
                 '- OpenAI — Harness Engineering',
                 '- Anthropic Engineering Blog',
-                '- 其他来源仅作补充参考'
+                '- Addy Osmani — Loop Engineering',
+                '- Addy Osmani — Agent Harness Engineering'
               ].join('\n'),
               labels: ['knowledge-refresh']
             });
