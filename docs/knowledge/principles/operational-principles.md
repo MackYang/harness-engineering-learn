@@ -40,7 +40,8 @@
 | 8 安全纵深 | Anthropic: vault + proxy |
 | 14 错误防御工具设计 | Anthropic: SWE-bench str_replace_editor |
 | 15 上下文感知存储 | Anthropic: Contextual Retrieval |
+| 18 成功静默失败冗长 | Addy/HumanLayer: Hook 反馈原则 |
 
 ---
 
-*最后更新：2026-06-23*
+*最后更新：2026-06-26*

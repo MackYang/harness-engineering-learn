@@ -23,7 +23,8 @@ docs/knowledge/
     ├── anthropic-engineering-2026-06-16.md
     ├── anthropic-managed-agents-2026-04-08.md                ← Meta-Harness 接口设计
     ├── anthropic-long-running-apps-2026-03-24.md             ← GAN 三 Agent + Sprint Contract
-    └── addy-loop-engineering-2026-06-07.md                      ← Loop Engineering 首次正式定义
+    ├── addy-loop-engineering-2026-06-07.md                      ← Loop Engineering 首次正式定义
+    ├── addy-agent-harness-engineering-2026-06-26.md              ← Agent Harness Engineering 综合指南
 ```
 
 ## 按场景导航
@@ -40,6 +41,9 @@ docs/knowledge/
 ### 我想深入看原始学习笔记
 → 读 `sources/` 目录下的文件
 
+### 我想了解 Agent Harness Engineering（脚手架工程）
+→ 读 `sources/addy-agent-harness-engineering-2026-06-26.md`（Addy Osmani 综合指南，含 Ratchet、HaaS、Context Rot 等）
+
 ### 我想了解 Loop Engineering（循环工程）
 → 读 `sources/addy-loop-engineering-2026-06-07.md`（Addy Osmani 首次命名，五大构件 + 与 Harness 的关系）
 
@@ -53,6 +57,7 @@ docs/knowledge/
 | OpenAI Harness Engineering | https://openai.com/index/harness-engineering/ | `principles/golden-rules.md` |
 | Anthropic Building Effective Agents | https://www.anthropic.com/engineering/building-effective-agents | `patterns/agent-workflows.md` |
 | Anthropic Harness Design 系列 | https://www.anthropic.com/engineering/ | `sources/` |
+| Addy Osmani Agent Harness Engineering | https://addyosmani.com/blog/agent-harness-engineering/ | `sources/addy-agent-harness-engineering-2026-06-26.md` |
 | Addy Osmani Loop Engineering | https://addyosmani.com/blog/loop-engineering/ | `sources/addy-loop-engineering-2026-06-07.md` |
 
 ## 维护规则
