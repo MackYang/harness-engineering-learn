@@ -22,6 +22,15 @@ cp -r templates/service-starter/* /path/to/new-service/
 | `docs/status/` | 任务状态总表 | 本仓库对应目录 |
 | `docs/handoff/` | 上下文交接 | 本仓库对应目录 |
 | `.github/workflows/ci.yml` | CI 跑 `make verify` | 本仓库对应文件 |
+| `harness/skills/` | 项目知识编码（SKILL.md） | Loop Engineering LP-3 |
+| `harness/plugins/` | 跨项目分发包（Skill+Connector 打包） | Loop Engineering LP-4 |
+
+## Skill vs Plugin
+
+- **Skill** = 创作格式。单个项目的知识编码，存放在 `harness/skills/<name>/SKILL.md`
+- **Plugin** = 分发格式。打包 Skills + Connectors，跨项目一键安装
+
+当多个服务需要共享同一套 Skill 时，应将其提升为 Plugin。
 
 ## 不要直接复制的
 

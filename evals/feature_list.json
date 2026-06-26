@@ -480,5 +480,104 @@
     "source": "OpenAI — 'A quality document grades each product domain and architectural layer, tracking gaps over time'",
     "passes": false,
     "priority": "P2"
+  },
+  {
+    "id": "FEAT-039",
+    "category": "loop",
+    "description": "Automation heartbeat: scheduled tasks run on cadence for discovery and triage, with /goal for run-until-done using independent model judgment",
+    "steps": [
+      "Automation runs on schedule (cron, /loop, GitHub Actions)",
+      "Finds work automatically (CI failures, open issues, recent commits)",
+      "Results routed to triage inbox or archived",
+      "/goal uses independent model for stop condition (maker/checker split)",
+      "Automation calls Skills rather than hardcoded prompts"
+    ],
+    "source": "Addy Osmani — 'Automations are what make a loop an actual loop and not just one run you did once'",
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-040",
+    "category": "loop",
+    "description": "Worktree isolation: multiple agents work in parallel without file collisions via git worktree isolation",
+    "steps": [
+      "Each agent works in separate git worktree with its own branch",
+      "Worktree is auto-created before task and cleaned up after",
+      "No file collision between parallel agents",
+      "Parallel count stays within human review bandwidth (orchestration tax)"
+    ],
+    "source": "Addy Osmani — 'Two agents writing the same file is the exact same headache as two engineers committing to the same lines'",
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-041",
+    "category": "loop",
+    "description": "Maker/Checker sub-agent split: generator and verifier are separate agents with different instructions and optionally different models",
+    "steps": [
+      "Code writing agent (maker) produces output",
+      "Verification agent (checker) reviews with fresh context",
+      "Checker has different instructions and optionally different model",
+      "Stop condition judged by independent model, not the one that did the work"
+    ],
+    "source": "Addy Osmani — 'The model that wrote the code is way too nice grading its own homework'",
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-042",
+    "category": "loop",
+    "description": "State memory persistence: cross-loop state persisted to disk so new sessions can resume where previous ones stopped",
+    "steps": [
+      "Progress/state file lives outside single conversation (on disk)",
+      "State file includes contextual explanations (not just raw status)",
+      "New agent session can unambiguously understand state and resume",
+      "Tomorrow's run picks up where today's run stopped"
+    ],
+    "source": "Addy Osmani — 'The agent forgets, the repo doesn't'",
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-043",
+    "category": "loop",
+    "description": "Connector integration: loop connects to real tools (CI, issue tracker, Slack, database) via MCP for end-to-end autonomous action",
+    "steps": [
+      "MCP connectors configured for necessary tools",
+      "Loop can open PR, update ticket, ping channel without human intervention",
+      "Connector permissions scoped appropriately",
+      "Plugin = Connector + Skills packaged for distribution"
+    ],
+    "source": "Addy Osmani — 'The connectors are the reason the loop can act inside your actual environment'",
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-044",
+    "category": "harness",
+    "description": "The Ratchet: every agent failure becomes a permanent rule traceable back to a specific incident, never brainstormed",
+    "steps": [
+      "Agent failure is logged with full context",
+      "Failure converted to enforceable rule (AGENTS.md entry, hook, linter)",
+      "Each rule in AGENTS.md traceable to a specific failure event",
+      "Rules only removed when a capable model has proven them redundant"
+    ],
+    "source": "Addy Osmani — 'Every line in a good AGENTS.md should be traceable back to a specific thing that went wrong'",
+    "passes": false,
+    "priority": "P1"
+  },
+  {
+    "id": "FEAT-045",
+    "category": "loop",
+    "description": "Skill compounding: skills encode project knowledge so loop's understanding compounds over cycles instead of re-deriving from zero",
+    "steps": [
+      "Core project conventions encoded as Skills (SKILL.md)",
+      "Skill descriptions are specific enough for automatic matching",
+      "Skills callable by automation via $name or auto-matched by task",
+      "Cross-project sharing via Plugin packaging"
+    ],
+    "source": "Addy Osmani — 'Without skills the loop re-derives your whole project from zero every cycle, with skills it kind of compounds'",
+    "passes": false,
+    "priority": "P1"
   }
 ]

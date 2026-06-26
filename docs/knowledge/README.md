@@ -45,10 +45,11 @@ docs/knowledge/
 → 读 `sources/addy-agent-harness-engineering-2026-06-26.md`（Addy Osmani 综合指南，含 Ratchet、HaaS、Context Rot 等）
 
 ### 我想了解 Loop Engineering（循环工程）
-→ 读 `sources/addy-loop-engineering-2026-06-07.md`（Addy Osmani 首次命名，五大构件 + 与 Harness 的关系）
+→ 读 `sources/addy-loop-engineering-2026-06-07.md`（Addy Osmani 首次命名，五大构件）
+→ 读 `principles/loop-engineering-principles.md`（六大构件原则 + 检查清单）
 
-### 我想理解上下文工程
-→ 读 `principles/context-engineering.md`
+### 我想认知风险管理
+→ 读 `docs/org/cognitive-risks.md`（验证责任、理解力萎缩、认知投降）
 
 ## 核心参考来源
 
