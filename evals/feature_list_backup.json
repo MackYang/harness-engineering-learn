@@ -428,227 +428,155 @@
   {
     "id": "FEAT-035",
     "category": "lint",
-    "description": "Lint errors include auto-fix: lint script generates executable code fixes that can be auto-applied by agents",
+    "description": "Boring technology preference: prefer composable, API-stable, well-represented-in-training-set technologies over novel but opaque alternatives",
     "steps": [
-      "Lint tool generates structured error messages with embedded fix code",
-      "Fix code is executable in the agent's execution environment",
-      "Agent can auto-apply fixes without leaving the sandbox",
-      "Fixes are reviewed for safety before application"
+      "Document technology choices with rationale",
+      "Prefer reimplementing subsets over opaque third-party dependencies",
+      "Ensure 100% test coverage for reimplemented utilities",
+      "Integrate with observability (OpenTelemetry etc.)"
     ],
-    "source": "OpenAI — 'Lint errors include fix instructions so agents know what to do'",
-    "passes": true,
+    "source": "OpenAI — 'Technologies described as boring tend to be easier for agents to model'",
+    "passes": false,
     "priority": "P2"
   },
   {
     "id": "FEAT-036",
-    "category": "loop",
-    "description": "Five-component loop architecture: Automations/Worktrees/Skills/Plugins/Sub-agents+State",
+    "category": "review",
+    "description": "Agent-to-agent review: push review effort towards agent-to-agent rather than human review, with humans as optional reviewers",
     "steps": [
-      "Automations run on schedule for discovery and triage",
-      "Worktrees provide isolation for parallel agents",
-      "Skills codify project knowledge to avoid re-explanation",
-      "Plugins/Connectors integrate with existing tools",
-      "Sub-agents split ideation from verification",
-      "State persists completion status across sessions"
+      "Automated agent reviewers check code quality",
+      "Agent responds to reviewer feedback automatically",
+      "Human review is optional escalation path",
+      "Review coverage increases without human bottleneck"
     ],
-    "source": "Addy Osmani — Loop Engineering",
+    "source": "OpenAI — 'We've pushed almost all review effort towards being handled agent-to-agent'",
     "passes": false,
-    "priority": "P1"
+    "priority": "P2"
   },
   {
     "id": "FEAT-037",
-    "category": "loop",
-    "description": "/goal primitive: agent continues working across turns until verifiable stopping condition holds",
+    "category": "knowledge",
+    "description": "Plans as first-class artifacts: lightweight plans for small changes, execution plans with progress tracking for complex work, all versioned in repo",
     "steps": [
-      "Agent receives stopping criteria like 'all tests pass and lint is clean'",
-      "Separate model checks completion after each turn",
-      "Maker and checker models are separated to avoid bias",
-      "Pause/resume/clear controls for manual oversight"
+      "Small changes use ephemeral lightweight plans",
+      "Complex work uses execution plans with progress and decision logs",
+      "Active plans, completed plans, and tech debt are versioned together",
+      "Agents operate without relying on external context"
     ],
-    "source": "Addy Osmani — Loop Engineering",
+    "source": "OpenAI — 'Plans are treated as first-class artifacts'",
     "passes": false,
-    "priority": "P1"
+    "priority": "P2"
   },
   {
     "id": "FEAT-038",
-    "category": "context",
-    "description": "Intent debt mitigation: skills write down project conventions and build steps once, preventing re-derivation each session",
+    "category": "quality",
+    "description": "Quality grading per domain: document grading each product domain and architectural layer, tracking gaps over time",
     "steps": [
-      "Skills capture project intent in external files",
-      "Agent reads skills instead of guessing missing context",
-      "Skills compound knowledge across sessions",
-      "Descriptions beat cleverness for skill matching"
+      "Quality document grades each domain",
+      "Grades tracked over time to show improvement/regression",
+      "Background tasks update quality grades automatically",
+      "Gaps identified and targeted for improvement"
     ],
-    "source": "Addy Osmani — Loop Engineering",
+    "source": "OpenAI — 'A quality document grades each product domain and architectural layer, tracking gaps over time'",
     "passes": false,
-    "priority": "P1"
+    "priority": "P2"
   },
   {
     "id": "FEAT-039",
     "category": "loop",
-    "description": "Cognitive surrender prevention: loop design should enhance engineering judgment, not replace it",
+    "description": "Automation heartbeat: scheduled tasks run on cadence for discovery and triage, with /goal for run-until-done using independent model judgment",
     "steps": [
-      "Engineers maintain opinions about loop outputs",
-      "Loop doesn't eliminate the need for technical understanding",
-      "Loop speeds up work engineers already understand",
-      "Loop doesn't eliminate comprehension debt"
+      "Automation runs on schedule (cron, /loop, GitHub Actions)",
+      "Finds work automatically (CI failures, open issues, recent commits)",
+      "Results routed to triage inbox or archived",
+      "/goal uses independent model for stop condition (maker/checker split)",
+      "Automation calls Skills rather than hardcoded prompts"
     ],
-    "source": "Addy Osmani — Loop Engineering",
+    "source": "Addy Osmani — 'Automations are what make a loop an actual loop and not just one run you did once'",
     "passes": false,
-    "priority": "P2"
+    "priority": "P1"
   },
   {
     "id": "FEAT-040",
-    "category": "harness",
-    "description": "Harness-as-Service (HaaS): build on harness APIs that provide runtime rather than LLM completion APIs",
+    "category": "loop",
+    "description": "Worktree isolation: multiple agents work in parallel without file collisions via git worktree isolation",
     "steps": [
-      "Use Claude Agent SDK, Codex SDK, or OpenAI Agents SDK",
-      "Get loop, tools, context management, hooks, sandbox primitives out of the box",
-      "Customize harness components for specific tasks",
-      "Abstract away model details and focus on orchestration"
+      "Each agent works in separate git worktree with its own branch",
+      "Worktree is auto-created before task and cleaned up after",
+      "No file collision between parallel agents",
+      "Parallel count stays within human review bandwidth (orchestration tax)"
     ],
-    "source": "Addy Osmani — Agent Harness Engineering",
+    "source": "Addy Osmani — 'Two agents writing the same file is the exact same headache as two engineers committing to the same lines'",
     "passes": false,
-    "priority": "P2"
+    "priority": "P1"
   },
   {
     "id": "FEAT-041",
-    "category": "harness",
-    "description": "Ratchet effect: every agent mistake becomes a permanent constraint in the harness",
+    "category": "loop",
+    "description": "Maker/Checker sub-agent split: generator and verifier are separate agents with different instructions and optionally different models",
     "steps": [
-      "Mistakes are signals, not one-off stories",
-      "Constraints only added after real failures observed",
-      "Constraints only removed when capable model makes them redundant",
-      "Every AGENTS.md line traceable to specific failure"
+      "Code writing agent (maker) produces output",
+      "Verification agent (checker) reviews with fresh context",
+      "Checker has different instructions and optionally different model",
+      "Stop condition judged by independent model, not the one that did the work"
     ],
-    "source": "Addy Osmani — Agent Harness Engineering",
+    "source": "Addy Osmani — 'The model that wrote the code is way too nice grading its own homework'",
     "passes": false,
     "priority": "P1"
   },
   {
     "id": "FEAT-042",
-    "category": "harness",
-    "description": "Behavior-driven harness design: derive harness components from desired behaviors",
+    "category": "loop",
+    "description": "State memory persistence: cross-loop state persisted to disk so new sessions can resume where previous ones stopped",
     "steps": [
-      "Start with behavior you want (or want to fix)",
-      "Design harness component to deliver that behavior",
-      "Every component has specific job and purpose",
-      "Remove components that don't deliver desired behavior"
+      "Progress/state file lives outside single conversation (on disk)",
+      "State file includes contextual explanations (not just raw status)",
+      "New agent session can unambiguously understand state and resume",
+      "Tomorrow's run picks up where today's run stopped"
     ],
-    "source": "Addy Osmani — Agent Harness Engineering",
+    "source": "Addy Osmani — 'The agent forgets, the repo doesn't'",
     "passes": false,
     "priority": "P1"
   },
   {
     "id": "FEAT-043",
-    "category": "security",
-    "description": "Trust boundary for MCP servers: treat MCP servers as trusted text read by agent, not executable code",
+    "category": "loop",
+    "description": "Connector integration: loop connects to real tools (CI, issue tracker, Slack, database) via MCP for end-to-end autonomous action",
     "steps": [
-      "MCP servers run outside agent sandbox",
-      "Agent reads MCP output as text data, not executing it",
-      "MCP servers are audited separately from agent code",
-      "Malicious MCP cannot prompt-inject agent before user typing"
+      "MCP connectors configured for necessary tools",
+      "Loop can open PR, update ticket, ping channel without human intervention",
+      "Connector permissions scoped appropriately",
+      "Plugin = Connector + Skills packaged for distribution"
     ],
-    "source": "Addy Osmani — Agent Harness Engineering",
+    "source": "Addy Osmani — 'The connectors are the reason the loop can act inside your actual environment'",
     "passes": false,
-    "priority": "P1"
+    "priority": "P2"
   },
   {
     "id": "FEAT-044",
     "category": "harness",
-    "description": "Long-running Ralph Loops: hooks intercept exit attempts, inject original prompt with fresh context",
+    "description": "The Ratchet: every agent failure becomes a permanent rule traceable back to a specific incident, never brainstormed",
     "steps": [
-      "Each iteration restarts with fresh context but previous state",
-      "Simple technique to convert single-session agent to multi-session",
-      "State persists in filesystem between iterations",
-      "Ensures complex multi-step tasks complete"
+      "Agent failure is logged with full context",
+      "Failure converted to enforceable rule (AGENTS.md entry, hook, linter)",
+      "Each rule in AGENTS.md traceable to a specific failure event",
+      "Rules only removed when a capable model has proven them redundant"
     ],
-    "source": "Addy Osmani — Agent Harness Engineering",
+    "source": "Addy Osmani — 'Every line in a good AGENTS.md should be traceable back to a specific thing that went wrong'",
     "passes": false,
-    "priority": "P2"
+    "priority": "P1"
   },
   {
     "id": "FEAT-045",
-    "category": "architecture",
-    "description": "Three-layer containment model: environment > model > external content with overlapping defense",
+    "category": "loop",
+    "description": "Skill compounding: skills encode project knowledge so loop's understanding compounds over cycles instead of re-deriving from zero",
     "steps": [
-      "Environment layer: sandbox, egress control, filesystem isolation",
-      "Model layer: classifiers, probes, probabilistic filtering",
-      "External content layer: tool permission limits, external data auditing",
-      "Layers overlap so failure in one caught by another"
+      "Core project conventions encoded as Skills (SKILL.md)",
+      "Skill descriptions are specific enough for automatic matching",
+      "Skills callable by automation via $name or auto-matched by task",
+      "Cross-project sharing via Plugin packaging"
     ],
-    "source": "Anthropic — 'How we contain Claude across products'",
-    "passes": false,
-    "priority": "P1"
-  },
-  {
-    "id": "FEAT-046",
-    "category": "security",
-    "description": "Pre-approval injection vector mitigation: delay configuration loading until after user trust dialog",
-    "steps": [
-      "Local config parsing and execution delayed until trust acceptance",
-      ".claude/settings.json hooks execute only after user approval",
-      "Project setup before 'trust this folder?' prompt is prevented",
-      "Mitigates attacks through phishing emails to employees"
-    ],
-    "source": "Anthropic — 'How we contain Claude across products'",
-    "passes": false,
-    "priority": "P1"
-  },
-  {
-    "id": "FEAT-047",
-    "category": "architecture",
-    "description": "Decoupled brain-hand architecture: separate session (event log), harness (loop), sandbox (execution)",
-    "steps": [
-      "Session state persisted outside agent context",
-      "Harness (brain) decoupled from sandbox (hands)",
-      "Multiple hands can connect to single brain",
-      "Fault isolation: components can fail independently"
-    ],
-    "source": "Anthropic — 'Scaling Managed Agents: Decoupling the brain from the hands'",
-    "passes": false,
-    "priority": "P1"
-  },
-  {
-    "id": "FEAT-048",
-    "category": "architecture",
-    "description": "Meta-Harness design: generic interfaces (execute/wake/getSession/emitEvent) for future harness flexibility",
-    "steps": [
-      "execute(name, input) → string: hands basic interface",
-      "wake(sessionId): restart harness",
-      "getSession(id): retrieve event log",
-      "emitEvent(id, event): log events",
-      "No assumptions about number/location of brains/hands"
-    ],
-    "source": "Anthropic — 'Scaling Managed Agents: Decoupling the brain from the hands'",
-    "passes": false,
-    "priority": "P2"
-  },
-  {
-    "id": "FEAT-049",
-    "category": "harness-core",
-    "description": "Zero manual code principle: scaffolding disciplines eliminate the need for manual coding",
-    "steps": [
-      "Automatic scaffolding generation for common patterns",
-      "Template-driven code generation",
-      "Error prevention at scaffold level",
-      "Consistent codebase structure without manual effort"
-    ],
-    "source": "OpenAI — Harness Engineering",
-    "passes": false,
-    "priority": "P0"
-  },
-  {
-    "id": "FEAT-050",
-    "category": "security",
-    "description": "Symbol link attack prevention: proper symlink resolution must occur before path validation",
-    "steps": [
-      "Symlink resolution happens before path access control",
-      "Symlinks are treated as attack vectors, not just shortcuts",
-      "Path validation includes symlink traversal protection",
-      "Enterprise customers can use MDM to set mount path allowlists"
-    ],
-    "source": "Anthropic — 'How we contain Claude across products'",
+    "source": "Addy Osmani — 'Without skills the loop re-derives your whole project from zero every cycle, with skills it kind of compounds'",
     "passes": false,
     "priority": "P1"
   }
