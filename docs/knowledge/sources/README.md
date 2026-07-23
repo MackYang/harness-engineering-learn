@@ -40,6 +40,10 @@
 | 2026-06-29 | OpenAI | openai-harness-engineering-2026-06-29.md | 零手动代码原则、脚手架纪律 |
 | 2026-06-29 | Anthropic | anthropic-engineering-new-2026-06-29.md | 代理安全架构、大脑-手-会话解耦 |
 | 2026-06-29 | Addy Osmani | addy-osmani-loop-agent-harness-2026-06-29.md | Loop Engineering 五大构件、Agent Harness 系统 |
+| 2026-07-23 | Anthropic | anthropic-claude-containment-2026-07-23.md | 补充：已批准域外泄、EDR不可见、MCP安全、持久化内存中毒、多代理信任升级 |
+| 2026-07-23 | Addy Osmani | addy-agent-harness-engineering-2026-07-23.md | 补充：HaaS完整概念、行业收敛、三个开放问题、Sprint Contract |
+| 2026-07-23 | OpenAI | openai-harness-engineering-2026-07-23.md | 审视：Ralph Wiggum Loop引用、无聊技术三维度、最小化阻塞门控 |
+| 2026-07-23 | Addy Osmani | addy-loop-engineering-2026-07-23.md | 审视：/goal停止条件验证、认知投降、人类审查带宽天花板 |
 
 ## 📋 更新流程
 
@@ -115,4 +119,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-06-29*
+*最后更新：2026-07-23*
