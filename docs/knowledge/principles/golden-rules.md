@@ -91,6 +91,23 @@ Hook 反馈原则：检查通过时 Agent 什么都不听，失败时错误文�
 ### 19. 模型-Harness Co-training 过度拟合
 Agent 产品在 post-training 时 harness 在场，导致模型与特定 harness 过度耦合。最好用的 harness 不一定是训练时的那个，而是为你的任务设计的那个。
 
+## 补充原则（2026-08-03 基于 Anthropic Claude Code Postmortem 提炼）
+
+### 20. 系统提示词每行都要 Ablation 验证
+Anthropic 的一行 "≤25 words" 造成 3% 智能下降。**看似无害的长度限制可能严重影响智能**。每次提示词变更都应单独验证每行的影响。这与原则 18（成功静默，失败冗长）形成互补：不仅要监测运行时反馈，还要在部署前用广泛 eval 套件验证每个配置项。
+
+### 21. 上下文管理层是高风险区
+缓存优化的一行 API header 错误（`clear_thinking_20251015 keep:1`）导致整个 session reasoning 丢失。**上下文管理（caching、compaction、offloading）的任何优化都可能引入灾难性 bug**。角落情况（如 stale session）在常规测试中几乎不可见，需专门的端到端 scenario 测试覆盖。
+
+### 22. 用户默认值不可仅靠内部数据决定
+Anthropic 将 reasoning effort 从 high 改为 medium，内部 eval 显示智能略降但延迟显著改善。但用户明确反馈"变笨了"。**用户宁愿等更久也要更聪明的输出**——产品默认值的变更必须考虑用户感知权重，不能仅靠内部 benchmark 数据。
+
+### 23. 多个独立变更可伪装成广泛退化
+三个不同问题在不同时间影响不同流量切片，叠加效果看起来像广泛不一致的退化。**当用户反馈模式不一致时，寻找多个叠加的原因而非单一根因**。
+
+### 24. Code Review Sub-Agent 能力随模型进化
+Opus 4.7 + 完整仓库上下文能发现 Opus 4.6 不能发现的 bug。**Harness 的 maker-checker split 不是静态配置，而是需要随模型进化持续调优的动态系统**。
+
 ## 补充细节（2026-06-09 从原文提取的遗漏要点）
 
 ### A. Ralph Wiggum Loop（审查闭环）
@@ -120,5 +137,5 @@ Codex 经常在单个任务上工作超过 6 小时（通常在人类睡觉时�
 
 ---
 
-*最后更新：2026-06-26*
+*最后更新：2026-08-03*
 *来源：OpenAI Harness Engineering + Anthropic Engineering + Addy Osmani Agent/Loop Engineering*
