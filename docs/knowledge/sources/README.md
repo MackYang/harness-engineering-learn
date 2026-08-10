@@ -45,6 +45,10 @@
 | 2026-07-23 | OpenAI | openai-harness-engineering-2026-07-23.md | 审视：Ralph Wiggum Loop引用、无聊技术三维度、最小化阻塞门控 |
 | 2026-07-23 | Addy Osmani | addy-loop-engineering-2026-07-23.md | 审视：/goal停止条件验证、认知投降、人类审查带宽天花板 |
 | 2026-07-27 | Anthropic | anthropic-claude-containment-2026-07-27.md | 深度：Cowork VM六层隔离、Full-VM→Host演进、Opus 4.7数据、canary string |
+| 2026-08-10 | OpenAI | openai-harness-engineering-2026-08-10.md | 审视：无变化，连续三周确认稳定 |
+| 2026-08-10 | Anthropic | anthropic-engineering-new-2026-08-10.md | 审视：无新文章，连续五周无更新 |
+| 2026-08-10 | Addy Osmani | addy-loop-engineering-2026-08-10.md | 审视：无变化，连续三周确认稳定 |
+| 2026-08-10 | Addy Osmani | addy-agent-harness-engineering-2026-08-10.md | 审视：无变化，连续三周确认稳定 |
 | 2026-08-03 | Anthropic | anthropic-claude-code-quality-postmortem-2026-08-03.md | **全新**：Claude Code 3个质量退化问题（effort默认值、缓存bug、提示词bug）及修复措施 |
 | 2026-07-27 | OpenAI | openai-harness-engineering-2026-07-27.md | 审视：无更新，重新确认核心要点 |
 | 2026-07-27 | Addy Osmani | addy-loop-engineering-2026-07-27.md | 审视：无更新，重新确认五大构件 |
@@ -124,4 +128,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-08-03*
+*最后更新：2026-08-10*
