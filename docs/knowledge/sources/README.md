@@ -49,6 +49,12 @@
 | 2026-08-10 | Anthropic | anthropic-engineering-new-2026-08-10.md | 审视：无新文章，连续五周无更新 |
 | 2026-08-10 | Addy Osmani | addy-loop-engineering-2026-08-10.md | 审视：无变化，连续三周确认稳定 |
 | 2026-08-10 | Addy Osmani | addy-agent-harness-engineering-2026-08-10.md | 审视：无变化，连续三周确认稳定 |
+| 2026-08-17 | OpenAI | openai-harness-engineering-2026-08-17.md | 审视：无变化，连续四周确认稳定 |
+| 2026-08-17 | Anthropic | anthropic-engineering-new-2026-08-17.md | 审视：无新文章，连续六周无更新 |
+| 2026-08-17 | Addy Osmani | addy-loop-engineering-2026-08-17.md | 审视：无变化，连续四周确认稳定 |
+| 2026-08-17 | Addy Osmani | addy-agent-harness-engineering-2026-08-17.md | 审视：无变化，连续四周确认稳定 |
+| 2026-08-17 | Addy Osmani | addy-software-factories-2026-08-17.md | **全新**：Software Factories 三层架构、Back Pressure、Light/Dark Factory、图vs循环 |
+| 2026-08-17 | Addy Osmani | addy-own-the-outer-loop-2026-08-17.md | **全新**：Outer Loop Ownership、Quality→Verdict→Answerability、信任-验证缺口、High Agency |
 | 2026-08-03 | Anthropic | anthropic-claude-code-quality-postmortem-2026-08-03.md | **全新**：Claude Code 3个质量退化问题（effort默认值、缓存bug、提示词bug）及修复措施 |
 | 2026-07-27 | OpenAI | openai-harness-engineering-2026-07-27.md | 审视：无更新，重新确认核心要点 |
 | 2026-07-27 | Addy Osmani | addy-loop-engineering-2026-07-27.md | 审视：无更新，重新确认五大构件 |
@@ -128,4 +134,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-08-10*
+*最后更新：2026-08-17*

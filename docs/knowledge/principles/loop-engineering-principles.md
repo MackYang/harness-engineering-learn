@@ -118,15 +118,79 @@ Harness 是单个 Agent 的运行环境（scaffold、skills、约束）。Loop E
   → [明天从这里继续]
 ```
 
+## Factory 层级（2026-08-17 新增）
+
+> 来源: Addy Osmani — [Software Factories, Light and Dark](https://addyosmani.com/blog/software-factories/) (2026-07-20)
+
+Loop 之上还有一层：**Software Factory = 大规模运行的多个受控循环**。
+
+**三层架构**：
+```
+Loop（循环）     = 一个代理重复做一件事
+Harness（脚手架）= 循环的围墙：沙箱、工具、记忆、完成门控
+Factory（工厂）  = 多个受控循环 + 工作队列 + 审查门控 + 人类拥有
+```
+
+**Factory 不是更大的 Agent，是循环组成的组织架构图。**
+
+### Factory 核心原则
+
+**FP-1. Back Pressure（背压）**：你只能给循环赋予你能廉价且可靠验证的自主权，多一寸都不行。验证，而非生成，是工厂的真正约束。
+
+**FP-2. Light vs Dark**：
+- **Light Factory**：人类读取产出后才发布，判断点前移到设计和架构阶段
+- **Dark Factory**：代码被发布时没有人类阅读过，测试全程绿灯但理解债务积累
+- 原则：只在检查廉价、高频、难以伪造的循环上开灯（全自动）
+
+**FP-3. Harness Engineering Is Not Enough**：仅靠 Harness 无法维持代码库质量，还需要工厂级别的审查门控和人类判断。在棕地系统中尤其如此。
+
+**FP-4. 代理步数限制**：代理 3-10 步保持稳定，超过 20 步开始失去线索（Dex Horthy 经验法则）。短循环更容易验证，更容易赢得全自动资格。
+
+**FP-5. 图优于纯循环**：用预定义的有向图（节点=步骤，边=条件）约束 Agent 路径，获得强制检查点和可读的失败点。大多数 Agent 实际上是"大部分确定性代码，在正确位置撒上 LLM 步骤"。
+
+### 工厂 Wiring Diagram
+
+```
+Intent（工程领导力） + Signals（事故、用户请求）
+           ↓
+      [工作队列]
+           ↓
+      [Harness 构建]  ← 代理在此工作（几乎零成本）
+           ↓
+      [自动化检查]  ← CI、测试、扫描（几乎零成本）
+           ↓
+   [Review Gate]  ← 唯一昂贵环节：人类判断
+           ↓
+      [部署] → [监控] → 反馈回 Signals
+```
+
+### Outer Loop Ownership（2026-08-17 新增）
+
+> 来源: Addy Osmani — [Own the Outer Loop](https://addyosmani.com/blog/own-the-outer-loop/) (AI Engineer World's Fair 2026 闭幕演讲)
+
+**人类不在内循环里，但在四个外循环中**：
+1. **Constraints Loop**：设置输入、架构、指令、不变量
+2. **Sampling Loop**：采样和审查多少输出
+3. **Audit Loop**：保留什么证据，确保审计日志有效
+4. **Ownership Loop**：拥有生产边界的哪个部分
+
+**问责三步链**：Quality（检查产生证据）→ Verdict（基于证据的决策）→ Answerability（能解释为什么）
+
+**信任-验证缺口**：生成速度 > 控制速度，导致 AI 代码的信任度与验证能力之间存在缺口。
+
 ## 风险与局限
 
 1. **验证仍在人类身上** — "done" 是声明不是证明
 2. **理解力萎缩（Comprehension Debt）** — loop 越快，你不理解的代码越多
 3. **认知投降（Cognitive Surrender）** — "设计好 loop 就躺平" 是最危险的姿态
+4. **认知债务** — 使用 AI 的工程师理解测试分数低 17 百分点（Anthropic RCT）
+5. **编排税** — 认知带宽不随代理并行化
 
 > That's what makes loop design harder than prompt engineering, not easier. The leverage point moved, the difficulty didn't go away.
 
+> "Agent 能写它。但在它到达用户之前，必须有人解释为什么它应该存在、为什么它足够安全、当它出错时你会怎么做。" — Addy Osmani
+
 ---
 
-*最后更新：2026-06-26*
-*来源: Addy Osmani Loop Engineering + OpenAI Harness Engineering + Anthropic Engineering*
+*最后更新：2026-08-17*
+*来源: Addy Osmani Loop/Factory/Outer Loop + OpenAI Harness Engineering + Anthropic Engineering*
