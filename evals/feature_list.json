@@ -889,5 +889,20 @@
     ],
     "passes": false,
     "priority": "P2"
+  },
+  {
+    "id": "FEAT-065",
+    "category": "knowledge",
+    "description": "Citation-completeness sweep: during stable periods, periodically re-read source articles in full and verify every cited reference is captured in knowledge notes",
+    "source": "Addy — Agent Harness Engineering (2026-09-14 full-text reread: found Böckeler overview and Fareed Khan Claude Code architecture breakdown previously uncaptured)",
+    "steps": [
+      "Pick one stable source article per review cycle for a full-text reread",
+      "Extract all outbound citations/links from the article",
+      "Check each citation against existing knowledge notes",
+      "Write supplementary notes for uncaptured citations (e.g. martinfowler.com harness-engineering overview)",
+      "Record candidate references for future deep reading in the source notes"
+    ],
+    "passes": false,
+    "priority": "P3"
   }
 ]

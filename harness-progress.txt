@@ -15,6 +15,13 @@
 
 ## 最近变更
 
+### 2026-09-14（周度学习）
+- 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续七周无新文章，本次为时隔近一个月的首次检查）
+- **全文复读发现 2 个此前遗漏的引用**（Agent Harness Engineering 文内）：Birgitta Böckeler 的 harness-engineering 用户侧综述（martinfowler.com）、Fareed Khan 的 Claude Code 架构解构（引用中每个概念映射到具名组件）
+- 补录到 `addy-agent-harness-engineering-2026-09-14.md`，并将两篇列为后续精读候选
+- 新增 FEAT-065（P3）：引用完整性巡检 —— 稳定期对源文章做全文级复读并核对出站引用是否被笔记覆盖
+- 更新 sources/README.md 学习历史与时间戳
+
 ### 2026-06-23（第 3+4 批）
 - ARCHITECTURE.md 重写：明确"知识架构 vs 目标分层架构 vs Meta-Harness 三组件"三个概念
 - CONTRIBUTING.md 扩充：加入场前清单、跑 `make verify`（非单独 lint）、追加 `harness-progress.txt`、高影响变更触发 ADR
