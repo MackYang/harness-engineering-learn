@@ -41,6 +41,9 @@ docs/knowledge/
 ### 我想深入看原始学习笔记
 → 读 `sources/` 目录下的文件
 
+### 我想从使用者视角理解 Harness（控制系统框架）
+→ 读 `sources/boeckeler-harness-engineering-2026-09-21.md`（Böckeler 用户侧综述：Feedforward/Feedback × Computational/Inferential 矩阵、三类调节对象、Harnessability、覆盖度开放问题）
+
 ### 我想了解 Agent Harness Engineering（脚手架工程）
 → 读 `sources/addy-agent-harness-engineering-2026-06-26.md`（Addy Osmani 综合指南，含 Ratchet、HaaS、Context Rot 等）
 
@@ -60,6 +63,7 @@ docs/knowledge/
 | Anthropic Harness Design 系列 | https://www.anthropic.com/engineering/ | `sources/` |
 | Addy Osmani Agent Harness Engineering | https://addyosmani.com/blog/agent-harness-engineering/ | `sources/addy-agent-harness-engineering-2026-06-26.md` |
 | Addy Osmani Loop Engineering | https://addyosmani.com/blog/loop-engineering/ | `sources/addy-loop-engineering-2026-06-07.md` |
+| Böckeler 用户侧综述（补充参考） | https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html | `sources/boeckeler-harness-engineering-2026-09-21.md` |
 
 ## 维护规则
 

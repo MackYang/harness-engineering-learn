@@ -904,5 +904,63 @@
     ],
     "passes": false,
     "priority": "P3"
+  },
+  {
+    "id": "FEAT-066",
+    "category": "knowledge",
+    "description": "Control classification matrix: classify every harness control along two orthogonal dimensions — direction (Feedforward Guides vs Feedback Sensors) and execution type (Computational vs Inferential)",
+    "source": "Böckeler — Harness Engineering for Coding Agent Users (martinfowler.com, 2026-09-21 deep read)",
+    "steps": [
+      "Feedforward Guides steer the agent before it acts; Feedback Sensors observe after it acts",
+      "Computational controls are deterministic CPU checks (tests, linters, type checks, structural analysis)",
+      "Inferential controls are semantic GPU checks (AI code review, LLM-as-judge) — slower, costlier, non-deterministic",
+      "Only-feedforward encodes rules that are never validated; only-feedback repeats the same mistakes forever",
+      "Map each project control (lint.sh, test.sh, eval.sh, policy_check.sh) into the 2x2 matrix"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-067",
+    "category": "knowledge",
+    "description": "Positive prompt injection: sensor output (linter/test failures) is written for LLM consumption with embedded self-correction instructions, not bare error text",
+    "source": "Böckeler — Harness Engineering (cross-validated with OpenAI custom lint remediation messages)",
+    "steps": [
+      "Custom linter errors include remediation instructions the agent can execute directly",
+      "Success is silent, failures are verbose and actionable (HumanLayer principle)",
+      "Feedback signals close the self-correction loop without human relay",
+      "Audit existing CI scripts: convert bare failure output into LLM-optimized signals"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-068",
+    "category": "knowledge",
+    "description": "Regulation categories: harnesses regulate three distinct target dimensions — Maintainability, Architecture Fitness, Behaviour — with very different harnessability",
+    "source": "Böckeler — Harness Engineering (2026-09-21 deep read)",
+    "steps": [
+      "Maintainability harness: easiest, rich pre-existing tooling (complexity, coverage, style, drift)",
+      "Architecture fitness harness: fitness functions for performance/observability characteristics",
+      "Behaviour harness: the elephant in the room — AI-generated test suites alone are not trustworthy enough",
+      "Neither computational nor inferential sensors reliably catch misdiagnosis, over-engineering, or misunderstood instructions",
+      "Correctness is outside any sensor's remit if the human never clearly specified what they wanted"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-069",
+    "category": "knowledge",
+    "description": "Harness coverage measurement (open problem): sensors that never fire are ambiguous — high quality or inadequate detection? Harnesses need coverage/quality metrics analogous to code coverage and mutation testing",
+    "source": "Böckeler — Harness Engineering, open questions section (2026-09-21 deep read)",
+    "steps": [
+      "Track sensor fire-rate per control as a first-class metric",
+      "Distinguish healthy silence from blind spots via periodic fault injection",
+      "Keep guides and sensors in sync as the harness grows — contradiction detection between controls",
+      "Treat the outer harness as an ongoing engineering practice, not one-time configuration"
+    ],
+    "passes": false,
+    "priority": "P3"
   }
 ]

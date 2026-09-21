@@ -59,6 +59,11 @@
 | 2026-09-14 | Anthropic | anthropic-engineering-new-2026-09-14.md | 审视：无新文章，连续七周无更新（时隔近一个月首检） |
 | 2026-09-14 | Addy Osmani | addy-loop-engineering-2026-09-14.md | 审视：无变化，连续五周确认稳定 |
 | 2026-09-14 | Addy Osmani | addy-agent-harness-engineering-2026-09-14.md | 审视+补录：正文无变化，全文复读发现 2 个遗漏引用（Böckeler 综述、Fareed Khan 架构解构），新增 FEAT-065 |
+| 2026-09-21 | OpenAI | openai-harness-engineering-2026-09-21.md | 审视：无变化，连续六周确认稳定 |
+| 2026-09-21 | Anthropic | anthropic-engineering-new-2026-09-21.md | 审视：无新文章，连续八周无更新 |
+| 2026-09-21 | Addy Osmani | addy-loop-engineering-2026-09-21.md | 审视：无变化，连续六周确认稳定 |
+| 2026-09-21 | Addy Osmani | addy-agent-harness-engineering-2026-09-21.md | 审视+跟进闭环：正文无变化；09-14 预留的 Böckeler 精读已完成 |
+| 2026-09-21 | Böckeler | boeckeler-harness-engineering-2026-09-21.md | **全新精读**：Feedforward/Feedback × Computational/Inferential 矩阵、三类调节对象、Harnessability、覆盖度开放问题，新增 FEAT-066~069 |
 | 2026-08-03 | Anthropic | anthropic-claude-code-quality-postmortem-2026-08-03.md | **全新**：Claude Code 3个质量退化问题（effort默认值、缓存bug、提示词bug）及修复措施 |
 | 2026-07-27 | OpenAI | openai-harness-engineering-2026-07-27.md | 审视：无更新，重新确认核心要点 |
 | 2026-07-27 | Addy Osmani | addy-loop-engineering-2026-07-27.md | 审视：无更新，重新确认五大构件 |

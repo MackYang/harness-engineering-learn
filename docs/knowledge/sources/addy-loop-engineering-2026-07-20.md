@@ -1,3 +1,4 @@
+<!-- gp-09-exempt: legitimate deep reference note (source learning archive), not a navigation doc -->
 # Addy Osmani Loop Engineering 新知识笔记 (2026-07-20)
 
 > 来源：https://addyosmani.com/blog/loop-engineering/

@@ -1,3 +1,4 @@
+<!-- gp-09-exempt: legitimate deep reference note (source learning archive), not a navigation doc -->
 # Anthropic Claude Containment 新知识笔记 (2026-07-20)
 
 > 来源：Anthropic 工程博客 - How we contain Claude across products

@@ -1,3 +1,4 @@
+<!-- gp-09-exempt: legitimate deep reference note (source learning archive), not a navigation doc -->
 # Anthropic Engineering 新知识笔记 (2026-07-13)
 
 > 来源：Anthropic 工程博客 - 最新文章分析
