@@ -15,6 +15,11 @@
 
 ## 最近变更
 
+### 2026-09-28（周度学习）
+- 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续九周无新文章）
+- **数据点抽检**（FEAT-065 引用完整性巡检的一次具体执行）：对 OpenAI 文章的关键数字（1,500 PR / 3→7 人 / 3.5 PR/人/天 / 百万行 / 6 小时单任务 / Aardvark）逐一核验历史笔记覆盖情况，确认无遗漏；顺带核验 Agent Harness Engineering 尾部 HaaS 段落（上次抓取截断处）已被历史笔记完整覆盖
+- 本周为纯审视周，无新知识产出，不新建 feature；四篇审视笔记见 `sources/*2026-09-28.md`
+- 更新 sources/README.md 时间戳
 ### 2026-09-14（周度学习）
 - 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续七周无新文章，本次为时隔近一个月的首次检查）
 - **全文复读发现 2 个此前遗漏的引用**（Agent Harness Engineering 文内）：Birgitta Böckeler 的 harness-engineering 用户侧综述（martinfowler.com）、Fareed Khan 的 Claude Code 架构解构（引用中每个概念映射到具名组件）
