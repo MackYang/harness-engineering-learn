@@ -15,6 +15,11 @@
 
 ## 最近变更
 
+### 2026-10-05（周度学习）
+- 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续十周无新文章）
+- OpenAI 文章做关键结构复核（零手动代码/AGENTS.md 目录化/固定层级/per-worktree 可观测性/GC 式偿债/端到端自主/最小门控），数据点抽检维持无遗漏结论；Loop Engineering 复核五大构件+第六件与三问题框架
+- 本周为纯审视周，无新知识产出，不新建 feature；四篇审视笔记见 `sources/*2026-10-05.md`
+- 更新 sources/README.md 学习历史与时间戳
 ### 2026-09-28（周度学习）
 - 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续九周无新文章）
 - **数据点抽检**（FEAT-065 引用完整性巡检的一次具体执行）：对 OpenAI 文章的关键数字（1,500 PR / 3→7 人 / 3.5 PR/人/天 / 百万行 / 6 小时单任务 / Aardvark）逐一核验历史笔记覆盖情况，确认无遗漏；顺带核验 Agent Harness Engineering 尾部 HaaS 段落（上次抓取截断处）已被历史笔记完整覆盖
