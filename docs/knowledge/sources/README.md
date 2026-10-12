@@ -68,6 +68,10 @@
 | 2026-10-05 | Anthropic | anthropic-engineering-new-2026-10-05.md | 审视：无新文章，连续十周无更新 |
 | 2026-10-05 | Addy Osmani | addy-loop-engineering-2026-10-05.md | 审视：无变化，连续八周确认稳定 |
 | 2026-10-05 | Addy Osmani | addy-agent-harness-engineering-2026-10-05.md | 审视：无变化，连续八周确认稳定；核心概念清单复核 + 引用状态复核 |
+| 2026-10-12 | OpenAI | openai-harness-engineering-2026-10-12.md | 审视+遗漏修补：正文无变化（连续九周稳定），细粒度复核发现 **Parse, don't validate** 遗漏，补入 golden-rules 补充细节 H |
+| 2026-10-12 | Anthropic | anthropic-engineering-new-2026-10-12.md | 审视：无新文章，连续十一周无更新 |
+| 2026-10-12 | Addy Osmani | addy-loop-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心框架清单复核 |
+| 2026-10-12 | Addy Osmani | addy-agent-harness-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心概念清单复核 + 引用状态复核 |
 | 2026-08-03 | Anthropic | anthropic-claude-code-quality-postmortem-2026-08-03.md | **全新**：Claude Code 3个质量退化问题（effort默认值、缓存bug、提示词bug）及修复措施 |
 | 2026-07-27 | OpenAI | openai-harness-engineering-2026-07-27.md | 审视：无更新，重新确认核心要点 |
 | 2026-07-27 | Addy Osmani | addy-loop-engineering-2026-07-27.md | 审视：无更新，重新确认五大构件 |
@@ -147,4 +151,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-10-05*
+*最后更新：2026-10-12*

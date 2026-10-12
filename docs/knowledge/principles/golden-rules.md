@@ -135,7 +135,10 @@ Codex 经常在单个任务上工作超过 6 小时（通常在人类睡觉时�
 ### G. 周五清理日的进化
 初期人类每周五花 20% 时间清理 "AI slop"，后来改为编码 golden principles + 后台 Codex 定期扫描偏差并开重构 PR，大多数 1 分钟内审查完自动合并。
 
+### H. Parse, don't validate（在边界解析数据形状）
+（2026-10-12 补录）原文要求 Codex 在边界处解析数据形状，但不规定实现方式（模型自己选了 Zod，团队未指定库）。与 golden principles 之 (2) 同源：禁止 "YOLO 式探测数据"——要么校验边界，要么依赖 typed SDK，让 Agent 无法建立在猜测的数据形状之上。这是原则 5（约束而非微观管理）+ 原则 14（错误防御工具设计）在数据层的具体落点，三者共同构成防御纵深：工具层强约束、边界层强解析、原则层禁猜测。
+
 ---
 
-*最后更新：2026-08-03*
+*最后更新：2026-10-12*
 *来源：OpenAI Harness Engineering + Anthropic Engineering + Addy Osmani Agent/Loop Engineering*
