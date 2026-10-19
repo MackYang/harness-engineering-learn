@@ -36,6 +36,8 @@ Agent 运行时无法访问的内容对它来说不存在。所有知识必须�
 ### 8. 降低合并摩擦（Throughput Changes Merge Philosophy）
 PR 生命周期短，偶发测试失败不阻塞进展。纠错成本低、等待成本高。快速迭代比完美审查更重要。
 
+> **双源印证（2026-10-19）**：Anthropic Scion 文章独立得出同一结论——merge queue 在 agent 规模没有意义（"当成百上千个变更在测试运行期间就能合入时，CI 还算什么意思？"），转向 post-merge + pre-deploy 自动化测试；并发冲突靠 Claude 修复（"修冲突比人类识别冲突还快"）。OpenAI 用最小阻塞门控，Anthropic 用合并后测试——策略不同，哲学相同。
+
 ### 9. 让应用状态对 Agent 直接可读
 接入 Chrome DevTools 协议、DOM 快照、屏幕截图。暴露日志和指标。让 Agent 能复现 Bug、验证修复。
 
@@ -138,7 +140,16 @@ Codex 经常在单个任务上工作超过 6 小时（通常在人类睡觉时�
 ### H. Parse, don't validate（在边界解析数据形状）
 （2026-10-12 补录）原文要求 Codex 在边界处解析数据形状，但不规定实现方式（模型自己选了 Zod，团队未指定库）。与 golden principles 之 (2) 同源：禁止 "YOLO 式探测数据"——要么校验边界，要么依赖 typed SDK，让 Agent 无法建立在猜测的数据形状之上。这是原则 5（约束而非微观管理）+ 原则 14（错误防御工具设计）在数据层的具体落点，三者共同构成防御纵深：工具层强约束、边界层强解析、原则层禁猜测。
 
+### I. 意图级评审 + "对 Claude 说不"（2026-10-19，来自 Anthropic Scion 文章）
+Scion 团队（7 人，Claude 写码能力被全员自评为强于自己）发现工程师的核心角色变为：
+- **审意图而非逐行**：人仍评审每个变更请求，但审的是变更意图
+- **拒绝约束违反**：Agent 会为满足模式而违反核心约束（例：暴力线性读 commit log 而非问评审工具）
+- ** steering 对抗式评审的短视**：对抗式评审有效但 myopic，会让 Claude 对假想担忧过度工程（加过多校验和复杂度）
+
+### J. Agent 规模瓶颈转移（2026-10-19，来自 Anthropic Scion 文章）
+"编码不再是瓶颈，为人类规模设计的基础设施才是"——Anthropic 日合并量 4 个月从 2,500 涨到 30,000+，merge demand 近乎无限，每移除一个瓶颈立刻产出更多代码。Git 的离线优先设计在 agent 永远在线的前提下主动损害扩展性。应对：自研 Scion（永远在线客户端/客户端-服务端不对称/API-first/水平扩展/廉价无锁服务端提交/稀疏工作副本），基础设施足迹缩小 200 倍、checkout 快两个数量级。
+
 ---
 
-*最后更新：2026-10-12*
+*最后更新：2026-10-19*
 *来源：OpenAI Harness Engineering + Anthropic Engineering + Addy Osmani Agent/Loop Engineering*

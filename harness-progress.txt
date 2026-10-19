@@ -15,6 +15,20 @@
 
 ## 最近变更
 
+### 2026-10-19（周度学习）
+- **Anthropic 终结连续十一周无新文章**：新发布《Redesigning source control at Anthropic》（Scion，Featured 替换，正文标注 Updated Oct 15）
+- 全文深读 Scion：agent 规模（日合并 2,500→30,000+，4 个月 12 倍）倒逼版本控制重构；六原则（永远在线客户端/客户端-服务端不对称/API-first/水平扩展/廉价无锁提交/稀疏工作副本）；200x 基础设施缩减 + 100x checkout 加速
+- 关键教训提取：瓶颈从编码移到人类规模基础设施；工程师角色 = 审意图 + "对 Claude 说不"（防约束违反、防对抗式评审驱动的过度工程）；Superfans 运维模式（每组件专属监控 agent）；merge queue 在 agent 规模失效 → post-merge 测试
+- **OpenAI 原则 8（吞吐量改变合并哲学）获得第二家独立数据印证**，已补入 golden-rules.md 原则 8 双源印证块 + 补充细节 I/J
+- 新增 FEAT-071~074（Scion 四要点）；四篇学习笔记见 sources/*2026-10-19.md
+- 下周盯防：Antique（代码评审工具）专文是文中明确预告的高概率下篇
+
+### 2026-10-12（周度学习）
+- 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续十一周无新文章）
+- **细粒度复核发现 1 个 OpenAI 文章遗漏要点：Parse, don't validate**（边界解析数据形状、禁 YOLO 式探测）→ 补入 golden-rules.md 补充细节 H，新增 FEAT-070（P2）
+- Loop Engineering / Agent Harness Engineering 核心框架与引用状态复核维持无遗漏结论
+- 四篇审视笔记见 `sources/*2026-10-12.md`；更新 sources/README.md 学习历史与时间戳
+
 ### 2026-10-05（周度学习）
 - 四大权威来源全文复查：OpenAI / Anthropic / Loop Engineering / Agent Harness Engineering 均无内容变化（Anthropic 连续十周无新文章）
 - OpenAI 文章做关键结构复核（零手动代码/AGENTS.md 目录化/固定层级/per-worktree 可观测性/GC 式偿债/端到端自主/最小门控），数据点抽检维持无遗漏结论；Loop Engineering 复核五大构件+第六件与三问题框架

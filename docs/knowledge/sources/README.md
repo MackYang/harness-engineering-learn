@@ -72,6 +72,11 @@
 | 2026-10-12 | Anthropic | anthropic-engineering-new-2026-10-12.md | 审视：无新文章，连续十一周无更新 |
 | 2026-10-12 | Addy Osmani | addy-loop-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心框架清单复核 |
 | 2026-10-12 | Addy Osmani | addy-agent-harness-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心概念清单复核 + 引用状态复核 |
+| 2026-10-19 | OpenAI | openai-harness-engineering-2026-10-19.md | 审视：无变化，连续十周确认稳定；原则 8 获 Scion 文章双源印证 |
+| 2026-10-19 | Anthropic | anthropic-engineering-new-2026-10-19.md | ⚠️ **新文章**：Redesigning source control（Scion），终结连续十一周无更新 |
+| 2026-10-19 | Anthropic | anthropic-source-control-scion-2026-10-19.md | **全新深读**：Scion 六原则、200x 基础设施缩减、意图级评审、Superfans 运维模式、merge queue 在 agent 规模失效，新增 FEAT-071~074 |
+| 2026-10-19 | Addy Osmani | addy-loop-engineering-2026-10-19.md | 审视：无变化，连续十周确认稳定；Superfans 验证 Automations 构件普适性 |
+| 2026-10-19 | Addy Osmani | addy-agent-harness-engineering-2026-10-19.md | 审视：无变化，连续十周确认稳定；"harness 不缩小只移动"在基础设施层再现 |
 | 2026-08-03 | Anthropic | anthropic-claude-code-quality-postmortem-2026-08-03.md | **全新**：Claude Code 3个质量退化问题（effort默认值、缓存bug、提示词bug）及修复措施 |
 | 2026-07-27 | OpenAI | openai-harness-engineering-2026-07-27.md | 审视：无更新，重新确认核心要点 |
 | 2026-07-27 | Addy Osmani | addy-loop-engineering-2026-07-27.md | 审视：无更新，重新确认五大构件 |
@@ -151,4 +156,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-10-12*
+*最后更新：2026-10-19*

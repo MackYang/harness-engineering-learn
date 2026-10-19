@@ -976,5 +976,63 @@
     ],
     "passes": false,
     "priority": "P2"
+  },
+  {
+    "id": "FEAT-071",
+    "category": "knowledge",
+    "description": "Agent-scale bottleneck shift: as agent coding throughput explodes, the bottleneck moves from writing code to human-scale developer infrastructure (source control, builds, CI) — infrastructure itself must be redesigned",
+    "source": "Anthropic — 'Redesigning source control at Anthropic' (Scion, 2026-10 deep read; validates OpenAI principle 8 as second independent data point)",
+    "steps": [
+      "Recognize merge demand is effectively infinite: removing one bottleneck immediately increases code production (Anthropic 2,500→30,000+ merges/day in 4 months)",
+      "Watch for human-scale tooling strain before it blocks agents: mirror farms, seed snapshots, partial-clone hacks are signs",
+      "Apply the reframe question: 'if we designed this system with always-online agents as the premise from day one, what would it look like?'",
+      "Expect the same shift pattern at smaller scale: worktrees-per-agent, per-worktree app boot, observability exposure (OpenAI) are early-stage equivalents"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-072",
+    "category": "knowledge",
+    "description": "Scion six principles for agent-scale source control: clients always online, client-server asymmetry, source control as comprehensive API service, horizontal scalability everywhere, cheap/incremental/lock-free server-side commits (no push; refs discouraged), optional sparse-by-design working copies",
+    "source": "Anthropic — 'Redesigning source control at Anthropic' (Scion, 2026-10 deep read)",
+    "steps": [
+      "Clients always online: server is the reachable authority; clients fetch on demand — inversion of git's offline-first design",
+      "Client-server asymmetry: server computes history/blame/merge; client is just a bounded cache + working-copy layout engine",
+      "API-first: every client query (blame, ancestry, diff) is exposed via API so jobs need no local repo (enables automated bisect/revert pipelines)",
+      "Cheap lock-free commits: cost scales with change size, not repo size; no packfiles, no locks, no refs movement (CAS on a single row, decoupled)",
+      "Sparse/virtualized checkouts: pay only for data actually read; many read AND write workloads skip checkout entirely via API",
+      "Results: 200x smaller infra footprint, 100x faster checkouts, 25% CI CPU win, >99% cache hit rate per tier"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-073",
+    "category": "knowledge",
+    "description": "Intent-level review and 'telling Claude no': humans review every change but examine intent instead of reading every line; engineer's key role is refusing constraint violations and steering away from adversarial-review-driven over-engineering",
+    "source": "Anthropic — 'Redesigning source control at Anthropic' (Scion lessons, 2026-10 deep read)",
+    "steps": [
+      "Review change intent, not lines: human review bandwidth scales only if the unit of review shifts from code to intent",
+      "Watch for constraint violations: agents may brute-force a pattern (e.g. linearly scanning commit logs) instead of using the proper service — encode 'no' into architecture/permissions when repeated",
+      "Steer against myopic adversarial review: AIs add defensive validation against hypothetical concerns (e.g. distrusting a trusted internal service) — prune over-engineering",
+      "Accept model superiority in code-writing while retaining human leverage in cross-system design tradeoffs and scale decisions"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-074",
+    "category": "knowledge",
+    "description": "Superfans ops pattern: dedicated per-component monitoring agents with full telemetry/log access that obsessively watch one component's health in a Slack channel, complementing (not replacing) traditional alerts by catching subtle novel issues",
+    "source": "Anthropic — 'Redesigning source control at Anthropic' (Scion ops, 2026-10 deep read; instantiates Loop Engineering Automations in SRE)",
+    "steps": [
+      "Assign one agent per critical component (e.g. scion-daemon superfan, merge-queue superfan) with read access to telemetry and logs",
+      "Give it a single obsession: refresh dashboards and look for anything strange, like an idle senior engineer",
+      "Keep traditional threshold alerts as the baseline; superfans add detection of subtle/novel issues that make alerts look one-dimensional",
+      "Apply maker/checker discipline: superfan reports and diagnoses, humans (or follow-up agents) decide and act"
+    ],
+    "passes": false,
+    "priority": "P3"
   }
 ]
