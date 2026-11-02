@@ -149,7 +149,16 @@ Scion 团队（7 人，Claude 写码能力被全员自评为强于自己）发�
 ### J. Agent 规模瓶颈转移（2026-10-19，来自 Anthropic Scion 文章）
 "编码不再是瓶颈，为人类规模设计的基础设施才是"——Anthropic 日合并量 4 个月从 2,500 涨到 30,000+，merge demand 近乎无限，每移除一个瓶颈立刻产出更多代码。Git 的离线优先设计在 agent 永远在线的前提下主动损害扩展性。应对：自研 Scion（永远在线客户端/客户端-服务端不对称/API-first/水平扩展/廉价无锁服务端提交/稀疏工作副本），基础设施足迹缩小 200 倍、checkout 快两个数量级。
 
+### K. AGENTS.md 单一巨型化的四联征与 attractive nuisance（2026-11-02 补录）
+原文列出的"one big AGENTS.md"失败四联征：① 上下文稀缺——巨文件挤掉任务/代码/相关文档；② 过多指导成为非指导——什么都重要等于什么都不重要，agent 退化为局部模式匹配；③ 瞬间腐烂——巨手册变成陈旧规则坟场，**文件悄悄变成 attractive nuisance（吸引性滋扰）**：法律借喻，像无护栏泳池——引诱 agent 靠近使用，里面过时规则反而诱导其做错事；④ 难以机械校验——单块无法做 coverage/freshness/ownership/cross-links 检查，漂移不可避免。此前笔记已录①②③的前半，本次补全 attractive nuisance 概念与④。
+
+### L. SLO 语言直接 prompt 化的具体数值（2026-11-02 补录）
+observability 接入 agent 后，性能验收从散文变为可查询指标。原文示例："ensure service startup completes in **under 800ms**"、"no span in these four critical user journeys exceeds **two seconds**"。价值：展示 LogQL/PromQL + per-worktree 可观测栈让 SLO 语言成为 agent 可执行的停止条件——验收标准机器化的具体形态。
+
+### M. Harness 组件生命周期与三源印证（2026-11-02，来自 Anthropic managed-agents 重写版）
+"harness 不缩小只移动"原则的第三个独立来源 + 首个完整生命周期实证：harnesses encode assumptions about what the model can't do → 假设随模型进步过时 → 组件变 dead weight → 应移除。实证案例（context anxiety）：Sonnet 4.5 在感知上下文将尽时提前收尾任务 → 当时加 context resets 对策 → Opus 4.5 上该行为消失，resets 成死重。三源：Addy（harnesses don't shrink they move）/ Anthropic long-running-apps / Anthropic managed-agents 重写版（2026-10-30）。治理机制：harness 组件应带"存在理由"元数据（编码哪条假设），模型升级时逐条质询——加法靠 Ratchet，减法靠配置审计节奏（Addy audit-your-agent-files）。
+
 ---
 
-*最后更新：2026-10-19*
+*最后更新：2026-11-02*
 *来源：OpenAI Harness Engineering + Anthropic Engineering + Addy Osmani Agent/Loop Engineering*

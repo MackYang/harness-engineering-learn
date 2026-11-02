@@ -51,6 +51,15 @@ docs/knowledge/
 → 读 `sources/addy-loop-engineering-2026-06-07.md`（Addy Osmani 首次命名，五大构件）
 → 读 `principles/loop-engineering-principles.md`（六大构件原则 + 检查清单）
 
+### 我想了解 Brownfield 老代码库的 agent 改造
+→ 读 `sources/addy-brownfield-agentic-engineering-2026-11-02.md`（Zones 分级自治、characterization-test-first、迁移完整性判据）
+
+### 我想了解 agent 配置的维护与减法
+→ 读 `sources/addy-audit-your-agent-files-2026-11-02.md`（配置半衰期、/doctor 审计、删除实验）
+
+### 我想了解 harness 组件生命周期（假设过时与拆除）
+→ 读 `sources/anthropic-managed-agents-rewrite-2026-11-02.md`（assumptions go stale + context-anxiety 实证）
+
 ### 我想认知风险管理
 → 读 `docs/org/cognitive-risks.md`（验证责任、理解力萎缩、认知投降）
 
@@ -60,7 +69,7 @@ docs/knowledge/
 |------|------|----------|
 | OpenAI Harness Engineering | https://openai.com/index/harness-engineering/ | `principles/golden-rules.md` |
 | Anthropic Building Effective Agents | https://www.anthropic.com/engineering/building-effective-agents | `patterns/agent-workflows.md` |
-| Anthropic Harness Design 系列 | https://www.anthropic.com/engineering/ | `sources/` |
+| Anthropic Harness Design 系列 | https://www.anthropic.com/engineering/ | `sources/`；完整文章索引快照（v2 含 _updatedAt 重写检测）：`anthropic-engineering-index-snapshot-2026-11-02.md`（每周 diff 对比基线） |
 | Addy Osmani Agent Harness Engineering | https://addyosmani.com/blog/agent-harness-engineering/ | `sources/addy-agent-harness-engineering-2026-06-26.md` |
 | Addy Osmani Loop Engineering | https://addyosmani.com/blog/loop-engineering/ | `sources/addy-loop-engineering-2026-06-07.md` |
 | Böckeler 用户侧综述（补充参考） | https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html | `sources/boeckeler-harness-engineering-2026-09-21.md` |

@@ -1034,5 +1034,89 @@
     ],
     "passes": false,
     "priority": "P3"
+  },
+  {
+    "id": "FEAT-075",
+    "category": "knowledge",
+    "description": "Harness component lifecycle management: every harness component encodes an assumption about what the model can't do; assumptions go stale as models improve, so components need assumption-tagging and periodic interrogation, not just additive ratchets. Evidence: Sonnet 4.5 context-anxiety resets became dead weight on Opus 4.5",
+    "source": "Anthropic — 'Scaling Managed Agents' rewrite (2026-10-30 _updatedAt; adds assumptions-go-stale framework + context-anxiety lifecycle case); corroborated by Addy 'Agent Harness Engineering' (harnesses don't shrink they move)",
+    "steps": [
+      "Tag each harness component (rule/hook/skill/prompt section) with the model limitation it encodes",
+      "On model upgrade, interrogate each tag: does this assumption still hold?",
+      "Remove components whose assumptions no longer hold (dead weight), don't just add",
+      "Pair additive discipline (ratchet: only add earned rules) with subtractive cadence (audit: test removal)"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-076",
+    "category": "knowledge",
+    "description": "Brownfield Zones: partition legacy codebase into green (safe/tested/isolated -> autonomous tight loop), yellow (mixed quality -> characterization tests first), red (auth/billing/permissions -> human pairing every step or no work); the map is drawn by a human, zones move only when earned, zone sets the verbs",
+    "source": "Addy Osmani — 'Brownfield Agentic Engineering' (2026-09; first learned 2026-11-02)",
+    "steps": [
+      "Human draws the zone map (agents left alone start in the scariest file because names are interesting)",
+      "Green: tight autonomous loop allowed; Yellow: characterization tests written before changes; Red: human pairing per step or work doesn't happen",
+      "Zone upgrade (yellow->green) requires: characterization tests exist AND module owner reviewed agent's first changes",
+      "Review the map on cadence as coverage improves"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-077",
+    "category": "knowledge",
+    "description": "Characterization-test-first + author/implementer separation for legacy work: pin current behavior (ugly parts included) in a separate pass or by a person before letting an agent change code; otherwise the green suite encodes the implementation just invented. Promotion path for surfaces without honest unit suites: replay/shadow dual-run and diff (Netflix GraphQL cutover pattern)",
+    "source": "Addy Osmani — 'Brownfield Agentic Engineering' (2026-09; first learned 2026-11-02)",
+    "steps": [
+      "Generate characterization tests that lock today's behavior before any improvement work",
+      "Never let the same session be the only author of the tests it later passes",
+      "For high-traffic surfaces without unit coverage: run old and new paths, diff payloads, promote only on match",
+      "Start migration with zero-risk mechanical work (dead code inventory), not the hairiest parts"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-078",
+    "category": "knowledge",
+    "description": "Dual-loop learning: a good rep sharpens both you and your agent; at task end, extract key lessons and decide the codify destination (lint rule / type constraint / doc convention / test / lessons.md); chat-window lessons die with the session, repo-codified lessons teach future agents",
+    "source": "Addy Osmani — 'Agentic Skill Decay' (2026-08-31; first learned 2026-11-02)",
+    "steps": [
+      "Ask agent to summarize key learnings at task end (completed task is not necessarily a rep)",
+      "For each corrected hypothesis, decide if it warrants becoming a lint rule, constraint, convention, or test",
+      "Prefer repo-codified lessons over memory-only; small enough to codify = teachable to future agents",
+      "Anthropic Trio study evidence: AI-assisted juniors who asked conceptual questions scored 67%-of-manual vs 50% for code-vending usage"
+    ],
+    "passes": false,
+    "priority": "P3"
+  },
+  {
+    "id": "FEAT-079",
+    "category": "knowledge",
+    "description": "Agent config audit cadence: configuration has a half-life; run /doctor every 2-4 weeks, review memory separately, and test removal (disable local skills entirely and see if the task still completes) — installation and keeping-forever are separate decisions; evidence: 100-repo study found lint leakage 62%, context bloat 42%, skill leakage 35%",
+    "source": "Addy Osmani — 'Audit your Agent files' (2026-08-27; first learned 2026-11-02)",
+    "steps": [
+      "Run /doctor (session config audit, not shell 'claude doctor') on a fixed cadence",
+      "Audit quality not just quantity: thin descriptions, overlapping triggers, forgotten experiments",
+      "Test removal: instruct agent to complete a task with zero local skills; if fine, delete",
+      "Archive-first policy: rules that must always hold move into tests/hooks/permissions, not prose"
+    ],
+    "passes": false,
+    "priority": "P2"
+  },
+  {
+    "id": "FEAT-080",
+    "category": "knowledge",
+    "description": "Factory run taxonomy + cost visibility: classify every agent run as success/flawed/blocked/manual, only success ships; pair the taxonomy with per-stage timing because a flawed run without cost data hides what verification actually costs (7-min no-rejection run vs 56-min two-rejection+human-decision run on the same factory)",
+    "source": "Addy Osmani — 'Human judgment doesn't leave the software factory' (2026-08; first learned 2026-11-02); Vercel four-state taxonomy referenced therein",
+    "steps": [
+      "Tag every run: success / flawed (wrong thing or missing context) / blocked (missing credential) / manual (trust boundary)",
+      "Only success runs ship to production; the rest re-enter the system",
+      "Record per-stage timing alongside the taxonomy to expose verification cost",
+      "A manual run is finished when the human knows what to do next, not when the factory stops"
+    ],
+    "passes": false,
+    "priority": "P3"
   }
 ]

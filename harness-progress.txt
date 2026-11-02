@@ -15,6 +15,15 @@
 
 ## 最近变更
 
+### 2026-11-02（周度学习）
+- **首次捕获 Anthropic 文章重写事件**：无新文章（Scion 仍最新，Antique 连续第三周未发），但 managed-agents 于 **10-30 被系统性重写**（`_updatedAt` 2026-10-30T15:51:07Z）——索引快照升级 v2（含 `_updatedAt`），此前仅 diff 标题列表将完全漏掉
+- **重写版深读**：新增 assumptions-go-stale 主旨框架 + context-anxiety 生命周期实证（Sonnet 4.5 提前收尾→context resets 对策→Opus 4.5 上变 dead weight）+ meta-harness 主旨显式化 + 攻击链放大机制（拿到 token 可 spawn 无限会话）
+- golden-rules 补充细节 K（AGENTS.md 四联征 + attractive nuisance）/ L（800ms/2s SLO prompt 示例）/ M（harness 生命周期三源印证）；新增 FEAT-075~080（共 80 个 feature）
+- **Addy Related reading 雷达发现 4 篇未学新文并全部深读**：Brownfield Agentic Engineering（Zones 分级自治/characterization-test-first/迁移完整性）、Agentic Skill Decay（reps 刻意化/dual-loop/Trio 实验 50% vs 67%）、Audit your Agent files（配置半衰期/Ratchet 减法节奏/三项研究转译）、Human Judgment Relocates（判断重定位/四态 run 分类/verification budget）
+- 确认 Addy 为 Anthropic MTS（Claude Code 团队）——三方来源的同源性注记，交叉印证时需注意
+- 降频策略生效：OpenAI/Loop Engineering 每周核对 + 细读仍挖出 6 个此前遗漏细节，证明"稳定≠无矿"；Anthropic 页面解析升级为提取带 publishedOn+_updatedAt 的完整 article 对象
+- 10 篇学习笔记见 sources/*2026-11-02.md；新文章发现渠道（文末 Related reading diff）纳入每周标准动作
+
 ### 2026-10-19（周度学习）
 - **Anthropic 终结连续十一周无新文章**：新发布《Redesigning source control at Anthropic》（Scion，Featured 替换，正文标注 Updated Oct 15）
 - 全文深读 Scion：agent 规模（日合并 2,500→30,000+，4 个月 12 倍）倒逼版本控制重构；六原则（永远在线客户端/客户端-服务端不对称/API-first/水平扩展/廉价无锁提交/稀疏工作副本）；200x 基础设施缩减 + 100x checkout 加速
@@ -82,3 +91,11 @@
 2. 读 `docs/status/harness-execution-status.md` 看任务卡
 3. 读 `evals/feature_list.json` 看真实通过率
 4. 选下一步候选 → 执行 → 追加记录到本文件
+
+### 2026-10-26（每周知识更新）
+- 四大权威来源本周均无内容变化：OpenAI/Addy×2 连续十一周稳定，Anthropic 无新文章（最新仍为 10-13 Scion）
+- **基础设施改进（本次重点）**：Anthropic engineering 页面为 Next.js SSR，web_fetch 取不到列表。本次用 curl + Next.js 内嵌 JSON 解析首次拿到完整文章索引（54 篇），固化为
+  `docs/knowledge/sources/anthropic-engineering-index-snapshot-2026-10-26.md`
+  这是 OpenAI"repo 即系统记录" + Addy Ratchet（重复摩擦一次性消除）原则的实践，后续每周对比改为 diff 快照
+- 深读闭环盘点：harness 强相关 10 篇全部已读；候选补读 3 篇（AI-resistant evals / infrastructure-noise / code-execution-with-mcp）
+- 策略调整建议：三篇稳定来源改为每月深读 + 每周标题核对，token 预算让给变化频繁的来源

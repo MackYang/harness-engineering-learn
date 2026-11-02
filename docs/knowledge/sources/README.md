@@ -37,6 +37,16 @@
 
 | 日期 | 来源 | 文件名 | 主要内容 |
 |------|------|--------|----------|
+| 2026-11-02 | OpenAI | openai-harness-engineering-2026-11-02.md | 审视：正文无变化（12 周稳定）；细读补录 2 个遗漏细节（attractive nuisance、800ms/2s SLO prompt 示例）→ golden-rules 补充 K/L |
+| 2026-11-02 | Anthropic | anthropic-engineering-new-2026-11-02.md | ⚠️ 无新文章，但发现 **managed-agents 于 10-30 被重写**（首次捕获重写事件）；索引快照升级 v2（含 _updatedAt） |
+| 2026-11-02 | Anthropic | anthropic-managed-agents-rewrite-2026-11-02.md | **全新深读**：重写版新增 assumptions-go-stale 框架、context-anxiety 生命周期实证（Sonnet 4.5→Opus 4.5 dead weight）、meta-harness 主旨、攻击链放大机制；golden-rules 补充 M（三源印证）+ FEAT-075 |
+| 2026-11-02 | Anthropic | anthropic-engineering-index-snapshot-2026-11-02.md | **基础设施升级**：快照 v2 含 `_updatedAt` 字段，可检测已发布文章的重写 |
+| 2026-11-02 | Addy Osmani | addy-loop-engineering-2026-11-02.md | 审视：无变化（13 周稳定）；补录 4 个细节（无发现自动归档、/goal pause-resume-clear、boring description 准则、subagent reasoning-effort 配置） |
+| 2026-11-02 | Addy Osmani | addy-agent-harness-engineering-2026-11-02.md | 审视：小幅更新（context-anxiety 表述与 Anthropic 互证，版本表述差异记录）；**文末 Related reading 成为新文章发现渠道**；作者 bio 确认 Anthropic MTS（Claude Code 团队） |
+| 2026-11-02 | Addy Osmani | addy-brownfield-agentic-engineering-2026-11-02.md | **全新深读**：Zones 分级自治（绿/黄/红 + 三条操作规则）、characterization-test-first、迁移完整性判据、大迁移案例结构可迁移；FEAT-076/077 |
+| 2026-11-02 | Addy Osmani | addy-agentic-skill-decay-2026-11-02.md | **全新深读**：reps 刻意化、dual-loop learning、Anthropic Trio 学习实验（50% vs 67%）+ 40 万会话专长研究、verification is the floor imagination is the ceiling；FEAT-078 |
+| 2026-11-02 | Addy Osmani | addy-audit-your-agent-files-2026-11-02.md | **全新深读**：配置半衰期、Ratchet 减法节奏（/doctor 2-4 周 + 删除实验）、三项研究转译（个人 skill ≤ 通用 skill；context files 不提升正确性但优化行为；散文摘要 4/45 vs 源码 27/45）；FEAT-079 |
+| 2026-11-02 | Addy Osmani | addy-human-judgment-relocates-2026-11-02.md | **全新深读**：判断重定位论、factory 门槛判断、四态 run 分类 + per-stage timing 成本可见性、verification budget、autonomy 阶梯；FEAT-080 |
 | 2026-06-29 | OpenAI | openai-harness-engineering-2026-06-29.md | 零手动代码原则、脚手架纪律 |
 | 2026-06-29 | Anthropic | anthropic-engineering-new-2026-06-29.md | 代理安全架构、大脑-手-会话解耦 |
 | 2026-06-29 | Addy Osmani | addy-osmani-loop-agent-harness-2026-06-29.md | Loop Engineering 五大构件、Agent Harness 系统 |
@@ -72,6 +82,11 @@
 | 2026-10-12 | Anthropic | anthropic-engineering-new-2026-10-12.md | 审视：无新文章，连续十一周无更新 |
 | 2026-10-12 | Addy Osmani | addy-loop-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心框架清单复核 |
 | 2026-10-12 | Addy Osmani | addy-agent-harness-engineering-2026-10-12.md | 审视：无变化，连续九周确认稳定；核心概念清单复核 + 引用状态复核 |
+| 2026-10-26 | OpenAI | openai-harness-engineering-2026-10-26.md | 审视：无变化，连续十一周稳定；建议降频为每月深读 |
+| 2026-10-26 | Anthropic | anthropic-engineering-new-2026-10-26.md | 审视：无新文章（最新仍为 10-13 Scion）；Antique 专文未发布，继续盯防 |
+| 2026-10-26 | Anthropic | anthropic-engineering-index-snapshot-2026-10-26.md | **基础设施改进**：首次提取完整文章索引（54 篇）固化快照，后续对比改为 diff 快照 |
+| 2026-10-26 | Addy Osmani | addy-loop-engineering-2026-10-26.md | 审视：无变化，连续十一周稳定；五构件映射验证本 cron 任务本身即最小 Loop 实例 |
+| 2026-10-26 | Addy Osmani | addy-agent-harness-engineering-2026-10-26.md | 审视：无变化；Ratchet 原则实践——Anthropic 页面解析摩擦固化为索引快照 |
 | 2026-10-19 | OpenAI | openai-harness-engineering-2026-10-19.md | 审视：无变化，连续十周确认稳定；原则 8 获 Scion 文章双源印证 |
 | 2026-10-19 | Anthropic | anthropic-engineering-new-2026-10-19.md | ⚠️ **新文章**：Redesigning source control（Scion），终结连续十一周无更新 |
 | 2026-10-19 | Anthropic | anthropic-source-control-scion-2026-10-19.md | **全新深读**：Scion 六原则、200x 基础设施缩减、意图级评审、Superfans 运维模式、merge queue 在 agent 规模失效，新增 FEAT-071~074 |
@@ -156,4 +171,4 @@ find /home/yh/projects/Learn/harness-engineering-learn/docs/knowledge/sources -n
 
 ---
 
-*最后更新：2026-10-19*
+*最后更新：2026-10-26*
